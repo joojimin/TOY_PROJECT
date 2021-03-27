@@ -1,6 +1,8 @@
 # toyproject
-공부하는 모든 것을 녹여보 프로젝트
+공부하는 모든 것을 녹여보는 프로젝트
 
+# blog
+https://joojimin.github.io/
 
 ## 기술 스택
 1. Java15
