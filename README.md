@@ -1,5 +1,5 @@
 # toyproject
-공부하는 모든 것을 녹여보는 프로젝트
+토이 프로젝트
 
 # blog
 https://joojimin.github.io/
