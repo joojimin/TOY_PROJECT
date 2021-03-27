@@ -5,8 +5,9 @@
 ## 기술 스택
 1. Java15
 2. SpringBoot 2.3.9 RELEASE
-3. mybatis
-4. lombok
+3. Mysql
+4. Mybatis
+5. lombok
    
 
 ## API 문서
