@@ -13,4 +13,5 @@ public class WebMvcConfig implements WebMvcRegistrations {
 	public RequestMappingHandlerMapping getRequestMappingHandlerMapping() {
 		return new VersionRequestMappingHandlerMapping("v");
 	}
+
 }

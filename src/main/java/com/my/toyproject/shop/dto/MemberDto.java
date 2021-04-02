@@ -1,4 +1,4 @@
-package com.my.toyproject.shop.vo;
+package com.my.toyproject.shop.dto;
 
 import lombok.*;
 
@@ -6,8 +6,9 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
+@Builder
 @ToString(of = {"memberId", "memberName", "memberAddress"})
-public class MemberVo {
+public class MemberDto {
     private int memberId;
     private String memberName;
     private String memberAddress;

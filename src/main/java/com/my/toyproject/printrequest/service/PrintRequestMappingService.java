@@ -1,4 +1,4 @@
-package com.my.toyproject.spring.service;
+package com.my.toyproject.printrequest.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 @MapperScan(basePackages = "com.my.toyproject.*.mapper")
 public class DatabaseConfig {
 
-    private static final String PATH_MAPPER = "mapper/*/*.xml";
+    private static final String PATH_MAPPER = "mapper/**/*.xml";
 
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource.hikari")
