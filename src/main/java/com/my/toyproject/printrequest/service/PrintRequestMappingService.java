@@ -3,6 +3,8 @@ package com.my.toyproject.printrequest.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
@@ -10,11 +12,12 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 
 @Slf4j
 @RequiredArgsConstructor
-@Service
+@Component
 public class PrintRequestMappingService {
 
 	private final RequestMappingHandlerMapping requestMappingHandlerMapping;
 
+	@Bean
 	public CommandLineRunner run(){
 		return args -> requestMappingHandlerMapping.getHandlerMethods().forEach(this::printRequestMappingInfo);
 	}
@@ -27,6 +30,6 @@ public class PrintRequestMappingService {
 			.append("]")
 			.append(value)
 			.toString();
-		log.debug(msg);
+		log.info(msg);
 	}
 }
