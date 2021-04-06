@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 @MapperScan(basePackages = "com.my.toyproject.*.mapper")
 public class DatabaseConfig {
 
-    private static final String PATH_MAPPER = "mapper/**/*.xml";
+    private static final String PATH_MAPPER_XML_FILE = "mapper/**/*.xml";
 
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource.hikari")
@@ -35,7 +35,7 @@ public class DatabaseConfig {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sqlSessionFactoryBean.setMapperLocations(resolver.getResources(PATH_MAPPER));
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources(PATH_MAPPER_XML_FILE));
         sqlSessionFactoryBean.setConfiguration(mybatisConfig());
         return sqlSessionFactoryBean.getObject();
     }
