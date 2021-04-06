@@ -7,5 +7,5 @@ import org.springframework.transaction.annotation.Transactional;
 @ActiveProfiles("dev")
 @SpringBootTest
 @Transactional
-public class CustomMapperConfig {
+public class CustomMapperTester {
 }

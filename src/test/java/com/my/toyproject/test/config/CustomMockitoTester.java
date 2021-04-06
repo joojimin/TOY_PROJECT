@@ -11,7 +11,7 @@ import org.mockito.verification.VerificationMode;
 import org.springframework.test.context.ActiveProfiles;
 
 @ExtendWith(MockitoExtension.class)
-public abstract class CustomMockitoConfig {
+public abstract class CustomMockitoTester {
 
 	protected abstract Class getTestClass();
 
