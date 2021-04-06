@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class IpAccessService {
 
 	private final IpAccessMapper ipAccessMapper;
-	private final Map<String, IpAccessUserDto> ipAccessFilterMap;
+	private Map<String, IpAccessUserDto> ipAccessFilterMap;
 
 	public IpAccessService(final IpAccessMapper ipAccessMapper){
 		this.ipAccessMapper = ipAccessMapper;
@@ -20,13 +20,13 @@ public class IpAccessService {
 	}
 
 	public void reload(){
-		load();
+		ipAccessFilterMap = load();
 	}
 
 	private Map<String, IpAccessUserDto> load(){
 		return ipAccessMapper.selectAll()
-			.stream()
-			.collect(Collectors.toUnmodifiableMap(IpAccessUserDto::getIp, Function.identity()));
+							 .stream()
+							 .collect(Collectors.toUnmodifiableMap(IpAccessUserDto::getIp, Function.identity()));
 	}
 
 	public boolean isAccess(final String ip){
