@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
-public class CustomMockMvcConfig {
+public class CustomMockMvcTester {
 
 	@Autowired
 	protected WebApplicationContext webApplicationContext;
