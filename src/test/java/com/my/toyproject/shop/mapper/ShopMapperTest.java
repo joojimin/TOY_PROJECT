@@ -1,14 +1,14 @@
 package com.my.toyproject.shop.mapper;
 
 import com.my.toyproject.shop.dto.MemberDto;
-import com.my.toyproject.test.config.CustomMapperConfig;
+import com.my.toyproject.test.config.CustomMapperTester;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 import java.util.List;
 
-class ShopMapperTest extends CustomMapperConfig {
+class ShopMapperTest extends CustomMapperTester {
 
 	@Autowired
 	ShopMapper shopMapper;
