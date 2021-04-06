@@ -1,16 +1,14 @@
 package com.my.toyproject.shop.controller;
 
-import com.my.toyproject.test.config.CustomMockMvcConfig;
+import com.my.toyproject.test.config.CustomMockMvcTester;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
-class ShopControllerTest extends CustomMockMvcConfig {
+class ShopControllerTest extends CustomMockMvcTester {
 
 	@Test
 	void getMemberAll() throws Exception {
