@@ -1,9 +1,10 @@
-package com.my.toyproject.printrequest.service;
+package com.my.toyproject.spring.config;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.method.HandlerMethod;
@@ -12,8 +13,8 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 
 @Slf4j
 @RequiredArgsConstructor
-@Component
-public class PrintRequestMappingService {
+@Configuration
+public class PrintRequestMappingConfig {
 
 	private final RequestMappingHandlerMapping requestMappingHandlerMapping;
 

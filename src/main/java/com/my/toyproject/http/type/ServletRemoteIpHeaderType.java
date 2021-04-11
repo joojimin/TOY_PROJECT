@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Getter
-public enum ServletRemoteIpHeader {
+public enum ServletRemoteIpHeaderType {
 
 	X_FORWARDED_FOR("X-FORWARDED-FOR"),
 	PROXY_CLIENT_IP("Proxy-Client-IP"), // Proxy 서버인 경우

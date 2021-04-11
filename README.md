@@ -5,11 +5,12 @@
 https://joojimin.github.io/
 
 ## 기술 스택
-1. Java15
+1. Java11
 2. SpringBoot 2.3.9 RELEASE
 3. Mysql
 4. Mybatis
 5. lombok
+6. Mockito, assertJ
    
 
 ## API 문서
