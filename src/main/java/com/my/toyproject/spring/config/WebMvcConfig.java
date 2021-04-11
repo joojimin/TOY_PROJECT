@@ -7,11 +7,10 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 
 @Slf4j
 @Configuration
-public class WebMvcConfig implements WebMvcRegistrations {
+public class WebMvcConfig implements WebMvcRegistrations{
 
 	@Override
 	public RequestMappingHandlerMapping getRequestMappingHandlerMapping() {
 		return new VersionRequestMappingHandlerMapping("v");
 	}
-
 }

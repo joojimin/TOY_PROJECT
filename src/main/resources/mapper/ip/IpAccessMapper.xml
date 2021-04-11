@@ -9,7 +9,7 @@
         FROM
             ip_access_table
         WHERE
-            openYN = 1
+            openYn = 1
     </select>
 
 </mapper>

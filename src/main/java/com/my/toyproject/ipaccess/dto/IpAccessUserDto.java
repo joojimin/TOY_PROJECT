@@ -1,7 +1,10 @@
 package com.my.toyproject.ipaccess.dto;
 
+import com.my.toyproject.ipaccess.type.IpAccessType;
 import lombok.*;
 import lombok.experimental.Accessors;
+
+import java.time.LocalDateTime;
 
 @Accessors(chain = true)
 @Setter
@@ -11,7 +14,12 @@ public class IpAccessUserDto {
 	private String ip;
 	private String name;
 	private String hp;
-	private String openYN;
-	private String updateTime;
-	private String registerTime;
+	private int openYN;
+	private IpAccessType ipAccessType;
+	private LocalDateTime updateTime;
+	private LocalDateTime registerTime;
+
+	public boolean isOpen(){
+		return this.openYN == 1;
+	}
 }
