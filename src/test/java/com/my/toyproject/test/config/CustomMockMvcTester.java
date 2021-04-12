@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
+import javax.servlet.Filter;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 @ActiveProfiles("dev")
@@ -32,7 +34,12 @@ public class CustomMockMvcTester {
 		this.mockMvc = MockMvcBuilders
 			.webAppContextSetup(webApplicationContext)
 			.addFilter(new CharacterEncodingFilter("UTF-8", true)) // Character Encoding
+			.addFilters(addFilters())
 			.alwaysDo(print())
 			.build();
+	}
+
+	protected Filter[] addFilters() {
+		return new Filter[0];
 	}
 }

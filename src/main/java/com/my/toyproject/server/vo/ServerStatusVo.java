@@ -3,11 +3,13 @@ package com.my.toyproject.server.vo;
 import com.my.toyproject.server.type.ServerStatusType;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
 @Getter
+@ToString
 public class ServerStatusVo {
 
 	private final String ip;

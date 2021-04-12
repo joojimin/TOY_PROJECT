@@ -1,5 +1,6 @@
 package com.my.toyproject.server.factory;
 
+import com.my.toyproject.server.type.ServerStatusType;
 import com.my.toyproject.server.vo.ServerStatusVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,8 +10,10 @@ import org.springframework.util.StringUtils;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -37,8 +40,27 @@ public class ServerStatusFactory {
 							 Function.identity())
 					);
 
-		myStatus = tempConnectedApiServerMap.get(myHostAddress());
+		myStatus = getMyStatusInfo(tempConnectedApiServerMap);
 		connectedApiServerMap = tempConnectedApiServerMap;
+
+		log.info("[LOAD] myStatus: {}", myStatus);
+		tempConnectedApiServerMap.values().stream().forEach((value)->log.info("[LOAD] otherServerStatus: {}", value));
+	}
+
+	private ServerStatusVo getMyStatusInfo(Map<String, ServerStatusVo> tempConnectedApiServerMap) throws UnknownHostException {
+		return tempConnectedApiServerMap.getOrDefault(myHostAddress(), defaultServerStatusVo());
+	}
+
+	private ServerStatusVo defaultServerStatusVo() throws UnknownHostException {
+		return new ServerStatusVo(InetAddress.getLocalHost().getHostAddress(),
+								  Integer.parseInt(environment.getProperty("server.port")),
+								  "API SERVER",
+								  ServerStatusType.PUBLIC,
+								  1,
+								  null,
+								  null,
+								  "system",
+								  LocalDateTime.now());
 	}
 
 	private String myHostAddress() throws UnknownHostException {

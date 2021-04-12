@@ -32,7 +32,7 @@ public class IpAccessService {
 			return false;
 		}
 
-		return IpAccessType.canAccess(ipAccessUserDtoOptional.get().getIpAccessType());
+		return IpAccessType.canAccess(ipAccessUserDtoOptional.get().getType());
 	}
 
 	public boolean isBlock(final String ip){
@@ -41,6 +41,6 @@ public class IpAccessService {
 			return true;
 		}
 
-		return IpAccessType.isBlock(ipAccessUserDtoOptional.get().getIpAccessType());
+		return IpAccessType.isBlock(ipAccessUserDtoOptional.get().getType());
 	}
 }
