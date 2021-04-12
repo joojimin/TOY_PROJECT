@@ -15,7 +15,7 @@ public class IpAccessUserDto {
 	private String name;
 	private String hp;
 	private int openYN;
-	private IpAccessType ipAccessType;
+	private IpAccessType type;
 	private LocalDateTime updateTime;
 	private LocalDateTime registerTime;
 

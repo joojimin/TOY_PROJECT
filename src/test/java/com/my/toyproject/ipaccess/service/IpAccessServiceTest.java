@@ -42,7 +42,7 @@ class IpAccessServiceTest extends CustomMockitoTester {
 		// include parameter
 		when(ipAccessUserFactory.getIpAccessUserDto(eq(ip))).thenReturn(Optional.of(new IpAccessUserDto().setIp(ip)
 																										 .setOpenYN(1)
-																										 .setIpAccessType(IpAccessType.ACCESS)));
+																										 .setType(IpAccessType.ACCESS)));
 
 
 		// when
@@ -63,7 +63,7 @@ class IpAccessServiceTest extends CustomMockitoTester {
 		// include parameter
 		when(ipAccessUserFactory.getIpAccessUserDto(eq(ip))).thenReturn(Optional.of(new IpAccessUserDto().setIp(ip)
 																										 .setOpenYN(1)
-																										 .setIpAccessType(IpAccessType.BLOCK)));
+																										 .setType(IpAccessType.BLOCK)));
 
 
 		// when

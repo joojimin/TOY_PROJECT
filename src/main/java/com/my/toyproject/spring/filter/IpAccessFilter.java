@@ -28,10 +28,12 @@ public class IpAccessFilter extends OncePerRequestFilter {
 									HttpServletResponse httpServletResponse,
 									FilterChain filterChain) throws ServletException, IOException {
 		String ip = getIp(httpServletRequest);
-		if(false == canAccess(ip)){
+		if(canAccess(ip)){
+			filterChain.doFilter(httpServletRequest, httpServletResponse);
+		}else{
+			// 접근불가
 			httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED);
 		}
-		filterChain.doFilter(httpServletRequest, httpServletResponse);
 	}
 
 	private boolean canAccess(final String ip){
