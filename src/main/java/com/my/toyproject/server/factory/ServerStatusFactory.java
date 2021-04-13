@@ -54,7 +54,7 @@ public class ServerStatusFactory {
 	private ServerStatusVo defaultServerStatusVo() throws UnknownHostException {
 		return new ServerStatusVo(InetAddress.getLocalHost().getHostAddress(),
 								  Integer.parseInt(environment.getProperty("server.port")),
-								  "API SERVER",
+								  "API_SERVER",
 								  ServerStatusType.PUBLIC,
 								  1,
 								  null,
