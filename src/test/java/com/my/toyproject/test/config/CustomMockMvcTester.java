@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.Ordered;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -28,7 +29,7 @@ public class CustomMockMvcTester {
 	@Autowired
 	protected MockMvc mockMvc;
 
-	@Order(0)
+	@Order(Ordered.LOWEST_PRECEDENCE)
 	@BeforeEach
 	protected void setUp(){
 		this.mockMvc = MockMvcBuilders
