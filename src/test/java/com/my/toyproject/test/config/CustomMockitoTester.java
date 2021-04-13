@@ -8,6 +8,7 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.stubbing.OngoingStubbing;
 import org.mockito.verification.VerificationMode;
+import org.springframework.core.Ordered;
 import org.springframework.test.context.ActiveProfiles;
 
 @ExtendWith(MockitoExtension.class)
@@ -15,7 +16,7 @@ public abstract class CustomMockitoTester {
 
 	protected abstract Class getTestClass();
 
-	@Order(0)
+	@Order(Ordered.LOWEST_PRECEDENCE)
 	@BeforeEach
 	public void init(){
 		MockitoAnnotations.initMocks(getTestClass());
