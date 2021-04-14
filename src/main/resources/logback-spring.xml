@@ -45,10 +45,10 @@
         </appender>
     </springProfile>
 
-    <root level="INFO">
+    <root level="DEBUG">
         <springProfile name="console-logging">
             <appender-ref ref="LOCAL_CONSOLE_POLICY"/>
-        </springProfile>a
+        </springProfile>
         <springProfile name="file-info-logging">
             <appender-ref ref="INFO_FILE_POLICY"/>
         </springProfile>
