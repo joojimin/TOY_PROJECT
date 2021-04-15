@@ -16,7 +16,7 @@ public abstract class CustomMockitoTester {
 
 	protected abstract Class getTestClass();
 
-	@Order(Ordered.LOWEST_PRECEDENCE)
+	@Order(Ordered.HIGHEST_PRECEDENCE)
 	@BeforeEach
 	public void init(){
 		MockitoAnnotations.initMocks(getTestClass());
