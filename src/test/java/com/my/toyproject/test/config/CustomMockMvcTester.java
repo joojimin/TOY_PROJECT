@@ -29,7 +29,7 @@ public class CustomMockMvcTester {
 	@Autowired
 	protected MockMvc mockMvc;
 
-	@Order(Ordered.LOWEST_PRECEDENCE)
+	@Order(Ordered.HIGHEST_PRECEDENCE)
 	@BeforeEach
 	protected void setUp(){
 		this.mockMvc = MockMvcBuilders
