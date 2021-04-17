@@ -1,5 +1,6 @@
 package com.my.toyproject.dblog.dto;
 
+import com.my.toyproject.dblog.type.DataBaseLogType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 public class DataBaseLogDto {
 
 	private Integer id;
+	private DataBaseLogType type;
 	private String url;
 	private String request;
 	private String response;

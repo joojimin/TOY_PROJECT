@@ -3,6 +3,7 @@ package com.my.toyproject.spring.interceptor;
 import com.my.toyproject.dblog.annotation.EnableDataBaseLog;
 import com.my.toyproject.dblog.assembler.DataBaseLogAssembler;
 import com.my.toyproject.dblog.service.DataBaseLogService;
+import com.my.toyproject.dblog.type.DataBaseLogType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -13,7 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -25,42 +29,58 @@ public class DataBaseLogInterceptor implements HandlerInterceptor {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-		EnableDataBaseLog enableDataBaseLog = getAnnotation(handler);
-		if(Objects.isNull(enableDataBaseLog)
-			|| false == enableDataBaseLog.enablePreHandle()){
-			return true; // skip
+		Optional<DataBaseLogType> logType = getAnnotation(handler).stream()
+																  .flatMap(annotation-> Arrays.stream(annotation.value()))
+																  .filter(DataBaseLogType::isPre)
+																  .findFirst();
+		if(logType.isEmpty()){
+			return true;
 		}
 
 		dataBaseLogServiceImpl
-			.insertLog(dataBaseLogAssembler.requestToDataBaseLogDto(request, ""));
+			.insertLog(dataBaseLogAssembler.requestToDataBaseLogDto(DataBaseLogType.PRE_HANDLE,
+																	request,
+																	""));
 		return true;
 	}
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-		EnableDataBaseLog enableDataBaseLog = getAnnotation(handler);
-		if(Objects.isNull(enableDataBaseLog)
-		   || false == enableDataBaseLog.enablePostHandle()){
+		Optional<DataBaseLogType> logType = getAnnotation(handler).stream()
+																  .flatMap(annotation-> Arrays.stream(annotation.value()))
+																  .filter(DataBaseLogType::isPost)
+																  .findFirst();
+		if(logType.isEmpty()){
 			return;
 		}
 
+
 		dataBaseLogServiceImpl
-			.insertLog(dataBaseLogAssembler.requestResponseToDataBaseLogDto(request, response, ""));
+			.insertLog(dataBaseLogAssembler.requestResponseToDataBaseLogDto(DataBaseLogType.POST_HANDLE,
+																			request,
+																			response,
+																			""));
 	}
 
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-		EnableDataBaseLog enableDataBaseLog = getAnnotation(handler);
-		if(Objects.isNull(enableDataBaseLog)
-		   || false == enableDataBaseLog.enableAfterComplete()){
+		Optional<DataBaseLogType> logType = getAnnotation(handler).stream()
+																  .flatMap(annotation-> Arrays.stream(annotation.value()))
+																  .filter(DataBaseLogType::isAfterComplete)
+																  .findFirst();
+		if(logType.isEmpty()){
 			return;
 		}
 
+
 		dataBaseLogServiceImpl
-			.insertLog(dataBaseLogAssembler.requestResponseToDataBaseLogDto(request, response, ""));
+			.insertLog(dataBaseLogAssembler.requestResponseToDataBaseLogDto(DataBaseLogType.AFTER_COMPLETE_HANDLE,
+																			request,
+																			response,
+																			""));
 	}
 
-	private EnableDataBaseLog getAnnotation(Object handler) {
+	private Optional<EnableDataBaseLog> getAnnotation(Object handler) {
 		if (handler instanceof HandlerMethod) {
 			final HandlerMethod handlerMethod = (HandlerMethod) handler;
 			final Method method = handlerMethod.getMethod();
@@ -71,8 +91,8 @@ public class DataBaseLogInterceptor implements HandlerInterceptor {
 				// TYPE ( Class )
 				annotation = method.getDeclaringClass().getAnnotation(EnableDataBaseLog.class);
 			}
-			return annotation;
+			return Optional.ofNullable(annotation);
 		}
-		return null;
+		return Optional.empty();
 	}
 }

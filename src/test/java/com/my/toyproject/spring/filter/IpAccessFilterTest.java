@@ -5,12 +5,6 @@ import com.my.toyproject.server.service.FindServerStatusService;
 import com.my.toyproject.test.config.CustomMockMvcTester;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.servlet.ServletComponentScan;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.test.web.servlet.MockMvc;
 
 import javax.servlet.Filter;
 
@@ -25,8 +19,6 @@ class IpAccessFilterTest extends CustomMockMvcTester {
 
 	@Autowired private IpAccessService ipAccessService;
 	@Autowired private FindServerStatusService findServerStatusServiceImpl;
-
-	@Autowired MockMvc mockMvc;
 
 	@Override
 	protected Filter[] addFilters() {

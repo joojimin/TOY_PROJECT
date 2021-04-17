@@ -4,6 +4,7 @@
 <mapper namespace="com.my.toyproject.dblog.mapper.DataBaseLogMapper">
     <sql id="column_database_log_table">
         id,
+        `type`,
         url,
         request,
         response,
@@ -20,6 +21,7 @@
         )
         VALUES (
             NULL,
+            #{type},
             #{url},
             #{request},
             #{response},

@@ -1,8 +1,11 @@
 package com.my.toyproject.dblog.assembler;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.my.toyproject.dblog.dto.DataBaseLogDto;
+import com.my.toyproject.dblog.type.DataBaseLogType;
 import com.my.toyproject.server.factory.ServerStatusFactory;
 import com.my.toyproject.util.converter.JsonNodeConverter;
+import com.my.toyproject.util.converter.TypeConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.ContentCachingRequestWrapper;
@@ -18,10 +21,11 @@ import java.time.LocalDateTime;
 public class DataBaseLogAssembler {
 
 	private final ServerStatusFactory serverStatusFactory;
-	private final JsonNodeConverter<byte[]> ByteArrayToJsonConverter;
+	private final TypeConverter<byte[], JsonNode> byteArrayToJsonConverter;
 
-	public DataBaseLogDto requestToDataBaseLogDto(HttpServletRequest request, String etc) throws IOException {
+	public DataBaseLogDto requestToDataBaseLogDto(DataBaseLogType type, HttpServletRequest request, String etc) throws IOException {
 		return new DataBaseLogDto()
+			.setType(type)
 			.setUrl(requestToUrl(request))
 			.setRequest(requestToRequest(request))
 			.setEtc(etc)
@@ -30,8 +34,12 @@ public class DataBaseLogAssembler {
 			.setRegisterTime(LocalDateTime.now());
 	}
 
-	public DataBaseLogDto requestResponseToDataBaseLogDto(HttpServletRequest request, HttpServletResponse response, String etc) throws IOException {
+	public DataBaseLogDto requestResponseToDataBaseLogDto(DataBaseLogType type,
+														  HttpServletRequest request,
+														  HttpServletResponse response,
+														  String etc) throws IOException {
 		return new DataBaseLogDto()
+			.setType(type)
 			.setUrl(requestToUrl(request))
 			.setRequest(requestToRequest(request))
 			.setResponse(responseToResponse(response))
@@ -47,11 +55,14 @@ public class DataBaseLogAssembler {
 
 	private String requestToRequest(HttpServletRequest request) throws IOException {
 		ContentCachingRequestWrapper wrappingRequest = (ContentCachingRequestWrapper)request;
-		return ByteArrayToJsonConverter.convert(wrappingRequest.getContentAsByteArray()).toString();
+
+		System.out.println("test  " + wrappingRequest.getContentAsByteArray().toString());
+		System.out.println("test2  " + byteArrayToJsonConverter.convert(wrappingRequest.getContentAsByteArray()));
+		return byteArrayToJsonConverter.convert(wrappingRequest.getContentAsByteArray()).toString();
 	}
 
 	private String responseToResponse(HttpServletResponse response) throws IOException {
 		ContentCachingResponseWrapper wrappingResponse = (ContentCachingResponseWrapper)response;
-		return ByteArrayToJsonConverter.convert(wrappingResponse.getContentAsByteArray()).toString();
+		return byteArrayToJsonConverter.convert(wrappingResponse.getContentAsByteArray()).toString();
 	}
 }

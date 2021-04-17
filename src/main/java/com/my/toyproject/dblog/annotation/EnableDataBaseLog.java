@@ -1,5 +1,7 @@
 package com.my.toyproject.dblog.annotation;
 
+import com.my.toyproject.dblog.type.DataBaseLogType;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -11,7 +13,5 @@ import java.lang.annotation.Target;
 	ElementType.METHOD
 })
 public @interface EnableDataBaseLog {
-	boolean enablePreHandle() default false;
-	boolean enablePostHandle() default true;
-	boolean enableAfterComplete() default false;
+	DataBaseLogType[] value() default { DataBaseLogType.POST_HANDLE };
 }
