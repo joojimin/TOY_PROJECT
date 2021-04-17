@@ -55,9 +55,6 @@ public class DataBaseLogAssembler {
 
 	private String requestToRequest(HttpServletRequest request) throws IOException {
 		ContentCachingRequestWrapper wrappingRequest = (ContentCachingRequestWrapper)request;
-
-		System.out.println("test  " + wrappingRequest.getContentAsByteArray().toString());
-		System.out.println("test2  " + byteArrayToJsonConverter.convert(wrappingRequest.getContentAsByteArray()));
 		return byteArrayToJsonConverter.convert(wrappingRequest.getContentAsByteArray()).toString();
 	}
 
