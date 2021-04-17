@@ -11,6 +11,7 @@ https://joojimin.github.io/
 4. Mybatis
 5. lombok
 6. Mockito, assertJ
+7. MapStruct, Jackson
    
 
 ## API 문서
