@@ -6,19 +6,22 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 import org.mockito.stubbing.OngoingStubbing;
 import org.mockito.verification.VerificationMode;
 import org.springframework.core.Ordered;
 import org.springframework.test.context.ActiveProfiles;
 
 @ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 public abstract class CustomMockitoTester {
 
 	protected abstract Class getTestClass();
 
 	@Order(Ordered.HIGHEST_PRECEDENCE)
 	@BeforeEach
-	public void init(){
+	protected void init(){
 		MockitoAnnotations.initMocks(getTestClass());
 	}
 
