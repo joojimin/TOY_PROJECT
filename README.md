@@ -1,15 +1,16 @@
 # toyproject
-공부하는 모든 것을 녹여보는 프로젝트
+토이 프로젝트
 
 # blog
 https://joojimin.github.io/
 
 ## 기술 스택
-1. Java15
+1. Java11
 2. SpringBoot 2.3.9 RELEASE
 3. Mysql
 4. Mybatis
 5. lombok
+6. Mockito, assertJ
    
 
 ## API 문서

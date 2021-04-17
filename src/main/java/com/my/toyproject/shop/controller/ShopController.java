@@ -3,7 +3,8 @@ package com.my.toyproject.shop.controller;
 import java.util.Collections;
 import java.util.List;
 
-import com.my.toyproject.shop.vo.MemberVo;
+import com.my.toyproject.dblog.annotation.EnableDataBaseLog;
+import com.my.toyproject.shop.dto.MemberDto;
 import com.my.toyproject.shop.service.ShopService;
 import com.my.toyproject.spring.annotation.ApiVersion;
 import lombok.RequiredArgsConstructor;
@@ -23,15 +24,16 @@ public class ShopController {
 
     @ApiVersion(VERSION_1_0)
     @GetMapping("/members")
-    public List<MemberVo> getMemberAll(){
-        List<MemberVo> list = shopServiceImpl.selectMembers();
+    @EnableDataBaseLog
+    public List<MemberDto> getMemberAll(){
+        List<MemberDto> list = shopServiceImpl.selectMembers();
         log.debug("[shopService] selectMember call. result={}", list);
         return list;
     }
 
     @ApiVersion(VERSION_2_0)
     @GetMapping("/members")
-    public List<MemberVo> getMemberAllV2_0(){
+    public List<MemberDto> getMemberAllV2_0(){
         // empty result
         return Collections.emptyList();
     }

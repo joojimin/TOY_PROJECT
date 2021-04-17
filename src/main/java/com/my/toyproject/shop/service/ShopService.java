@@ -1,9 +1,9 @@
 package com.my.toyproject.shop.service;
 
-import com.my.toyproject.shop.vo.MemberVo;
+import com.my.toyproject.shop.dto.MemberDto;
 
 import java.util.List;
 
 public interface ShopService {
-    List<MemberVo> selectMembers();
+    List<MemberDto> selectMembers();
 }

@@ -3,11 +3,11 @@
 
 <mapper namespace="com.my.toyproject.shop.mapper.ShopMapper">
 
-    <select id="selectMembers" resultType="com.my.toyproject.shop.vo.MemberVo">
+    <select id="selectMembers" resultType="com.my.toyproject.shop.dto.MemberDto">
         SELECT
             *
         FROM
-            shopdb.membertbl
+            member_table
     </select>
 
 </mapper>

@@ -1,7 +1,7 @@
 package com.my.toyproject.shop.service;
 
 import com.my.toyproject.shop.mapper.ShopMapper;
-import com.my.toyproject.shop.vo.MemberVo;
+import com.my.toyproject.shop.dto.MemberDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ public class ShopServiceImpl implements ShopService {
     private final ShopMapper shopMapper;
 
     @Override
-    public List<MemberVo> selectMembers() {
+    public List<MemberDto> selectMembers() {
         return shopMapper.selectMembers();
     }
 }
