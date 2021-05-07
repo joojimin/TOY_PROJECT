@@ -37,4 +37,11 @@ public class ShopController {
         // empty result
         return Collections.emptyList();
     }
+
+    @GetMapping("/exceptionTest")
+    public List<MemberDto> exceptionTest(){
+        shopServiceImpl.exceptionTest();
+
+        return shopServiceImpl.selectMembers();
+    }
 }
