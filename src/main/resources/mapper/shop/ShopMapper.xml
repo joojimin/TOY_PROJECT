@@ -10,4 +10,17 @@
             member_table
     </select>
 
+    <insert id="insertMember">
+        INSERT INTO member_table
+        (
+            member_name
+            , member_address
+            , register_time
+        ) VALUES (
+            #{memberName}
+            , #{memberAddress}
+            , #{registerTime}
+        )
+    </insert>
+
 </mapper>

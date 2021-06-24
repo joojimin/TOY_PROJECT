@@ -7,4 +7,5 @@ import java.util.List;
 public interface ShopService {
     List<MemberDto> selectMembers();
     void exceptionTest();
+    void transactionTest();
 }

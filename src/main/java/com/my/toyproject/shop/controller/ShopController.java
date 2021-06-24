@@ -9,6 +9,8 @@ import com.my.toyproject.shop.service.ShopService;
 import com.my.toyproject.spring.annotation.ApiVersion;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,10 +40,21 @@ public class ShopController {
         return Collections.emptyList();
     }
 
-    @GetMapping("/exceptionTest")
+    @GetMapping("/exception-test")
     public List<MemberDto> exceptionTest(){
         shopServiceImpl.exceptionTest();
 
         return shopServiceImpl.selectMembers();
+    }
+
+    @GetMapping("/transaction-test")
+    public ResponseEntity<Void> transactionTest() {
+        shopServiceImpl.transactionTest();
+        return ResponseEntity.ok().build();
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<Void> handleRuntimeException() {
+        return ResponseEntity.badRequest().build();
     }
 }
