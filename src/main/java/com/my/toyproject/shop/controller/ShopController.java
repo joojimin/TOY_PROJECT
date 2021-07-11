@@ -6,6 +6,7 @@ import java.util.List;
 import com.my.toyproject.dblog.annotation.EnableDataBaseLog;
 import com.my.toyproject.shop.dto.MemberDto;
 import com.my.toyproject.shop.service.ShopService;
+import com.my.toyproject.shop.service.ShopServiceImpl;
 import com.my.toyproject.spring.annotation.ApiVersion;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

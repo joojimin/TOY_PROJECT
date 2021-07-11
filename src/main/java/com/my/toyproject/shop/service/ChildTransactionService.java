@@ -16,7 +16,7 @@ public class ChildTransactionService {
 
     private final ShopMapper shopMapper;
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.NESTED)
     public void insertMember() {
         shopMapper.insertMember("childTest1", "구로구", LocalDateTime.now());
         log.error("===================================================");
