@@ -1,10 +1,8 @@
 package com.my.toyproject.shop.controller;
 
-import com.my.toyproject.spring.filter.CachingServletReqResFilter;
-import com.my.toyproject.spring.filter.IpAccessFilter;
+import com.my.toyproject.configuration.CachingServletReqResFilter;
 import com.my.toyproject.test.config.CustomMockMvcTester;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.Filter;
 

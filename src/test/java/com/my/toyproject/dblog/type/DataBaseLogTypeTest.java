@@ -1,5 +1,6 @@
 package com.my.toyproject.dblog.type;
 
+import com.my.toyproject.dblog.application.DataBaseLogType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -50,8 +51,8 @@ class DataBaseLogTypeTest {
 		assertThat(type1).isNotNull();
 		assertThat(DataBaseLogType.isPre(type)).isTrue();
 		assertThat(DataBaseLogType.isPre(type1)).isTrue();
-		assertThat(DataBaseLogType.isPre(DataBaseLogType.PRE_HANDLE)).isTrue();
-		assertThat(DataBaseLogType.isPre(DataBaseLogType.POST_HANDLE)).isFalse();
+		assertThat(DataBaseLogType.isPre(DataBaseLogType.PRE)).isTrue();
+		assertThat(DataBaseLogType.isPre(DataBaseLogType.POST)).isFalse();
 		assertThat(DataBaseLogType.isPre(DataBaseLogType.NONE)).isFalse();
 	}
 
@@ -66,8 +67,8 @@ class DataBaseLogTypeTest {
 		assertThat(type1).isNotNull();
 		assertThat(DataBaseLogType.isPost(type)).isTrue();
 		assertThat(DataBaseLogType.isPost(type1)).isTrue();
-		assertThat(DataBaseLogType.isPost(DataBaseLogType.POST_HANDLE)).isTrue();
-		assertThat(DataBaseLogType.isPost(DataBaseLogType.PRE_HANDLE)).isFalse();
+		assertThat(DataBaseLogType.isPost(DataBaseLogType.POST)).isTrue();
+		assertThat(DataBaseLogType.isPost(DataBaseLogType.PRE)).isFalse();
 		assertThat(DataBaseLogType.isPost(DataBaseLogType.NONE)).isFalse();
 	}
 
@@ -82,8 +83,8 @@ class DataBaseLogTypeTest {
 		assertThat(type1).isNotNull();
 		assertThat(DataBaseLogType.isAfterComplete(type)).isTrue();
 		assertThat(DataBaseLogType.isAfterComplete(type1)).isTrue();
-		assertThat(DataBaseLogType.isAfterComplete(DataBaseLogType.AFTER_COMPLETE_HANDLE)).isTrue();
-		assertThat(DataBaseLogType.isAfterComplete(DataBaseLogType.PRE_HANDLE)).isFalse();
+		assertThat(DataBaseLogType.isAfterComplete(DataBaseLogType.AFTER_COMPLETE)).isTrue();
+		assertThat(DataBaseLogType.isAfterComplete(DataBaseLogType.PRE)).isFalse();
 		assertThat(DataBaseLogType.isAfterComplete(DataBaseLogType.NONE)).isFalse();
 	}
 

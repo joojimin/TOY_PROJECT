@@ -1,9 +1,8 @@
 package com.my.toyproject.shop.controller;
 
 import com.my.toyproject.shop.service.ShopServiceImpl;
-import com.my.toyproject.spring.filter.CachingServletReqResFilter;
+import com.my.toyproject.configuration.CachingServletReqResFilter;
 import com.my.toyproject.test.config.CustomMockMvcTester;
-import com.my.toyproject.test.config.CustomMockitoTester;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.test.mock.mockito.MockBean;

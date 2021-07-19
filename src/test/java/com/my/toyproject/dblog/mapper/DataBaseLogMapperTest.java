@@ -1,7 +1,7 @@
 package com.my.toyproject.dblog.mapper;
 
 import com.my.toyproject.dblog.dto.DataBaseLogDto;
-import com.my.toyproject.dblog.type.DataBaseLogType;
+import com.my.toyproject.dblog.application.DataBaseLogType;
 import com.my.toyproject.test.config.CustomMapperTester;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +18,7 @@ class DataBaseLogMapperTest extends CustomMapperTester {
 	@Test
 	void insertTest(){
 		DataBaseLogDto dataBaseLogDto = new DataBaseLogDto()
-			.setType(DataBaseLogType.PRE_HANDLE)
+			.setType(DataBaseLogType.PRE)
 			.setUrl("/test")
 			.setRequest("test request")
 			.setServerIp("127.0.0.1")
@@ -45,7 +45,7 @@ class DataBaseLogMapperTest extends CustomMapperTester {
 	@Test
 	void insertTestfailed_2() {
 		DataBaseLogDto dataBaseLogDto = new DataBaseLogDto()
-			.setType(DataBaseLogType.PRE_HANDLE)
+			.setType(DataBaseLogType.PRE)
 			.setRequest("test request")
 			.setServerIp("127.0.0.1")
 			.setServerPort(8080);
@@ -59,7 +59,7 @@ class DataBaseLogMapperTest extends CustomMapperTester {
 	@Test
 	void insertTestfailed_3() {
 		DataBaseLogDto dataBaseLogDto = new DataBaseLogDto()
-			.setType(DataBaseLogType.PRE_HANDLE)
+			.setType(DataBaseLogType.PRE)
 			.setUrl("/test")
 			.setRequest("test request");
 

@@ -3,11 +3,10 @@ package com.my.toyproject.shop.controller;
 import java.util.Collections;
 import java.util.List;
 
-import com.my.toyproject.dblog.annotation.EnableDataBaseLog;
+import com.my.toyproject.dblog.application.EnableDataBaseLog;
 import com.my.toyproject.shop.dto.MemberDto;
 import com.my.toyproject.shop.service.ShopService;
-import com.my.toyproject.shop.service.ShopServiceImpl;
-import com.my.toyproject.spring.annotation.ApiVersion;
+import com.my.toyproject.common.ApiVersion;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +14,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.my.toyproject.spring.type.ApiVersionType.VERSION_1_0;
-import static com.my.toyproject.spring.type.ApiVersionType.VERSION_2_0;
+import static com.my.toyproject.common.ApiVersionType.VERSION_1_0;
+import static com.my.toyproject.common.ApiVersionType.VERSION_2_0;
 
 @Slf4j
 @RequiredArgsConstructor

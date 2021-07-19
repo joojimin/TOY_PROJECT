@@ -1,14 +1,15 @@
 package com.my.toyproject.dblog.assembler;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.my.toyproject.dblog.application.DataBaseLogAssembler;
 import com.my.toyproject.dblog.dto.DataBaseLogDto;
-import com.my.toyproject.dblog.type.DataBaseLogType;
+import com.my.toyproject.dblog.application.DataBaseLogType;
 import com.my.toyproject.server.factory.ServerStatusFactory;
 import com.my.toyproject.server.type.ServerStatusType;
 import com.my.toyproject.server.vo.ServerStatusVo;
 import com.my.toyproject.test.config.CustomMockitoTester;
-import com.my.toyproject.util.converter.ByteArrayToJsonConverter;
-import com.my.toyproject.util.converter.TypeConverter;
+import com.my.toyproject.common.ByteArrayToJsonConverter;
+import com.my.toyproject.common.TypeConverter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -29,7 +30,8 @@ class DataBaseLogAssemblerTest extends CustomMockitoTester {
 
 	@Spy TypeConverter<byte[], JsonNode> byteArrayToJsonConverter = new ByteArrayToJsonConverter();
 	@Mock ServerStatusFactory serverStatusFactory;
-	@InjectMocks DataBaseLogAssembler dataBaseLogAssembler;
+	@InjectMocks
+	DataBaseLogAssembler dataBaseLogAssembler;
 
 	private final static String TEST_IP = "127.0.0.1";
 	private final static Integer TEST_PORT = 8080;
@@ -61,11 +63,11 @@ class DataBaseLogAssemblerTest extends CustomMockitoTester {
 
 
 		// when
-		DataBaseLogDto dataBaseLogDto = assertDoesNotThrow(()->dataBaseLogAssembler.requestToDataBaseLogDto(DataBaseLogType.PRE_HANDLE, request, "test"));
+		DataBaseLogDto dataBaseLogDto = assertDoesNotThrow(()->dataBaseLogAssembler.requestToDataBaseLogDto(DataBaseLogType.PRE, request, "test"));
 
 		// then
 		assertThat(dataBaseLogDto).isNotNull();
-		assertThat(dataBaseLogDto.getType()).isEqualTo(DataBaseLogType.PRE_HANDLE);
+		assertThat(dataBaseLogDto.getType()).isEqualTo(DataBaseLogType.PRE);
 		assertThat(dataBaseLogDto.getRequest())
 			.isNotEmpty()
 			.isEqualTo("{\"TestKey\":\"HelloWorld\"}");
@@ -86,11 +88,11 @@ class DataBaseLogAssemblerTest extends CustomMockitoTester {
 
 		// when
 		DataBaseLogDto dataBaseLogDto = assertDoesNotThrow(
-			()->dataBaseLogAssembler.requestResponseToDataBaseLogDto(DataBaseLogType.POST_HANDLE, request, response, "test"));
+			()->dataBaseLogAssembler.requestResponseToDataBaseLogDto(DataBaseLogType.POST, request, response, "test"));
 
 		// then
 		assertThat(dataBaseLogDto).isNotNull();
-		assertThat(dataBaseLogDto.getType()).isEqualTo(DataBaseLogType.POST_HANDLE);
+		assertThat(dataBaseLogDto.getType()).isEqualTo(DataBaseLogType.POST);
 		assertThat(dataBaseLogDto.getRequest())
 			.isNotEmpty()
 			.isEqualTo("{\"TestKey\":\"HelloWorld\"}");

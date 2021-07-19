@@ -1,7 +1,8 @@
 package com.my.toyproject.dblog.service;
 
+import com.my.toyproject.dblog.domain.DataBaseLog;
+import com.my.toyproject.dblog.domain.DataBaseLogRepository;
 import com.my.toyproject.dblog.dto.DataBaseLogDto;
-import com.my.toyproject.dblog.mapper.DataBaseLogMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,10 +10,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class DataBaseLogServiceImpl implements DataBaseLogService {
 
-	private final DataBaseLogMapper dataBaseLogMapper;
+	private final DataBaseLogRepository dataBaseLogRepository;
 
 	@Override
 	public void insertLog(DataBaseLogDto dataBaseLogDto) {
-		dataBaseLogMapper.insertLog(dataBaseLogDto);
+		dataBaseLogRepository.save(dataBaseLogDto.toDataBaseLog());
 	}
 }

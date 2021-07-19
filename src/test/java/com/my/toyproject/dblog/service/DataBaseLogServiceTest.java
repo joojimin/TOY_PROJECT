@@ -2,7 +2,7 @@ package com.my.toyproject.dblog.service;
 
 import com.my.toyproject.dblog.dto.DataBaseLogDto;
 import com.my.toyproject.dblog.mapper.DataBaseLogMapper;
-import com.my.toyproject.dblog.type.DataBaseLogType;
+import com.my.toyproject.dblog.application.DataBaseLogType;
 import com.my.toyproject.test.config.CustomMockitoTester;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ class DataBaseLogServiceTest extends CustomMockitoTester {
 	@Test
 	public void insertTest(){
 		// given
-		DataBaseLogDto dataBaseLogDto = new DataBaseLogDto().setType(DataBaseLogType.PRE_HANDLE)
+		DataBaseLogDto dataBaseLogDto = new DataBaseLogDto().setType(DataBaseLogType.PRE)
 			.setUrl("/test")
 			.setRequest("{\"TestKey\":\"Hello World\"}")
 			.setResponse("{\"TestKey\":\"Hello World\"}")
