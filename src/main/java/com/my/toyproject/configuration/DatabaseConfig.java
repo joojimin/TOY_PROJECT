@@ -1,4 +1,4 @@
-package com.my.toyproject.spring.config;
+package com.my.toyproject.configuration;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
