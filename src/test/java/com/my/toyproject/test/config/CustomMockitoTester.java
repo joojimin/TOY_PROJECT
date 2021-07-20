@@ -14,7 +14,6 @@ import org.springframework.core.Ordered;
 import org.springframework.test.context.ActiveProfiles;
 
 @ExtendWith(MockitoExtension.class)
-@MockitoSettings(strictness = Strictness.LENIENT)
 public abstract class CustomMockitoTester {
 
 	protected abstract Class getTestClass();

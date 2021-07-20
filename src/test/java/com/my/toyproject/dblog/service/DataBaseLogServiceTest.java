@@ -1,7 +1,7 @@
 package com.my.toyproject.dblog.service;
 
+import com.my.toyproject.dblog.domain.DataBaseLogRepository;
 import com.my.toyproject.dblog.dto.DataBaseLogDto;
-import com.my.toyproject.dblog.mapper.DataBaseLogMapper;
 import com.my.toyproject.dblog.application.DataBaseLogType;
 import com.my.toyproject.test.config.CustomMockitoTester;
 import org.junit.jupiter.api.DisplayName;
@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DataBaseLogServiceTest extends CustomMockitoTester {
 
-	@Mock private DataBaseLogMapper dataBaseLogMapper;
+	@Mock private DataBaseLogRepository dataBaseLogRepository;
 	@InjectMocks private DataBaseLogServiceImpl dataBaseLogServiceImpl;
 
 	@Override

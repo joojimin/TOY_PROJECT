@@ -1,9 +1,8 @@
-package com.my.toyproject.ipaccess.service;
+package com.my.toyproject.ipaccess.application;
 
 import com.my.toyproject.ipaccess.dto.IpAccessUserDto;
-import com.my.toyproject.ipaccess.factory.IpAccessUserFactory;
-import com.my.toyproject.ipaccess.mapper.IpAccessMapper;
-import com.my.toyproject.ipaccess.type.IpAccessType;
+import com.my.toyproject.ipaccess.domain.IpAccessUserRepository;
+import com.my.toyproject.ipaccess.domain.IpAccessType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +13,7 @@ import java.util.Optional;
 @Service
 public class IpAccessService {
 
-	private final IpAccessMapper ipAccessMapper;
+	private final IpAccessUserRepository ipAccessUserRepository;
 	private final IpAccessUserFactory ipAccessUserFactory;
 
 	@PostConstruct
@@ -23,7 +22,7 @@ public class IpAccessService {
 	}
 
 	public void load(){
-		ipAccessUserFactory.load(ipAccessMapper.selectAll());
+		ipAccessUserFactory.load(ipAccessUserRepository.findAll());
 	}
 
 	public boolean isAccess(final String ip){

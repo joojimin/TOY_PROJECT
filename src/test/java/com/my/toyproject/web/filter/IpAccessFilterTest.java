@@ -1,6 +1,6 @@
 package com.my.toyproject.web.filter;
 
-import com.my.toyproject.ipaccess.service.IpAccessService;
+import com.my.toyproject.ipaccess.application.IpAccessService;
 import com.my.toyproject.server.service.FindServerStatusService;
 import com.my.toyproject.test.config.CustomMockMvcTester;
 import org.junit.jupiter.api.Test;

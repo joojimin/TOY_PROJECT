@@ -1,4 +1,4 @@
-package com.my.toyproject.ipaccess.type;
+package com.my.toyproject.ipaccess.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -20,19 +20,11 @@ public enum IpAccessType {
 		return Arrays.stream(values())
 					 .filter(value -> value.getCode() == code)
 					 .findFirst()
-					 .orElseGet(()->NONE);
-	}
-
-	public static boolean canAccess(final int code){
-		return ACCESS.getCode() == code;
+					 .orElse(NONE);
 	}
 
 	public static boolean canAccess(final IpAccessType ipAccessType){
 		return ACCESS == ipAccessType;
-	}
-
-	public static boolean isBlock(final int code){
-		return BLOCK.getCode() == code;
 	}
 
 	public static boolean isBlock(final IpAccessType ipAccessType){

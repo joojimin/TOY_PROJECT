@@ -1,7 +1,7 @@
 package com.my.toyproject.configuration;
 
 import com.my.toyproject.common.ServletRemoteIpHeaderType;
-import com.my.toyproject.ipaccess.service.IpAccessService;
+import com.my.toyproject.ipaccess.application.IpAccessService;
 import com.my.toyproject.server.service.FindServerStatusService;
 import com.my.toyproject.server.type.ServerStatusType;
 import lombok.RequiredArgsConstructor;

@@ -1,16 +1,16 @@
 package com.my.toyproject.ipaccess.service;
 
+import com.my.toyproject.ipaccess.application.IpAccessService;
 import com.my.toyproject.ipaccess.dto.IpAccessUserDto;
-import com.my.toyproject.ipaccess.factory.IpAccessUserFactory;
-import com.my.toyproject.ipaccess.mapper.IpAccessMapper;
-import com.my.toyproject.ipaccess.type.IpAccessType;
+import com.my.toyproject.ipaccess.application.IpAccessUserFactory;
+import com.my.toyproject.ipaccess.domain.IpAccessUserRepository;
+import com.my.toyproject.ipaccess.domain.IpAccessType;
 import com.my.toyproject.test.config.CustomMockitoTester;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Spy;
 
 import java.util.Optional;
 
@@ -21,9 +21,13 @@ import static org.mockito.ArgumentMatchers.*;
 
 class IpAccessServiceTest extends CustomMockitoTester {
 
-	@Mock IpAccessMapper ipAccessMapper;
-	@Mock IpAccessUserFactory ipAccessUserFactory;
-	@Spy @InjectMocks IpAccessService ipAccessService;
+	@Mock
+	IpAccessUserRepository ipAccessUserRepository;
+	@Mock
+	IpAccessUserFactory ipAccessUserFactory;
+
+	@InjectMocks
+	IpAccessService ipAccessService;
 
 
 	@Override
@@ -40,9 +44,11 @@ class IpAccessServiceTest extends CustomMockitoTester {
 	public void isAccess(String ip){
 		// given
 		// include parameter
-		when(ipAccessUserFactory.getIpAccessUserDto(eq(ip))).thenReturn(Optional.of(new IpAccessUserDto().setIp(ip)
-																										 .setOpenYN(1)
-																										 .setType(IpAccessType.ACCESS)));
+		when(ipAccessUserFactory.getIpAccessUserDto(eq(ip))).thenReturn(Optional.of(IpAccessUserDto.builder()
+																								   .ip(ip)
+																								   .openYN(true)
+																								   .type(IpAccessType.ACCESS)
+																								   .build()));
 
 
 		// when
@@ -61,9 +67,11 @@ class IpAccessServiceTest extends CustomMockitoTester {
 	public void isBlock(String ip){
 		// given
 		// include parameter
-		when(ipAccessUserFactory.getIpAccessUserDto(eq(ip))).thenReturn(Optional.of(new IpAccessUserDto().setIp(ip)
-																										 .setOpenYN(1)
-																										 .setType(IpAccessType.BLOCK)));
+		when(ipAccessUserFactory.getIpAccessUserDto(eq(ip))).thenReturn(Optional.of(IpAccessUserDto.builder()
+																								   .ip(ip)
+																								   .openYN(true)
+																								   .type(IpAccessType.BLOCK)
+																								   .build()));
 
 
 		// when
