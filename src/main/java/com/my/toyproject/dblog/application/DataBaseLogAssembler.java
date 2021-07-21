@@ -2,7 +2,7 @@ package com.my.toyproject.dblog.application;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.my.toyproject.dblog.dto.DataBaseLogDto;
-import com.my.toyproject.server.factory.ServerStatusFactory;
+import com.my.toyproject.server.application.ServerStatusFactory;
 import com.my.toyproject.common.TypeConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

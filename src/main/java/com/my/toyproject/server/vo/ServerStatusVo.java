@@ -1,13 +1,13 @@
 package com.my.toyproject.server.vo;
 
-import com.my.toyproject.server.type.ServerStatusType;
+import com.my.toyproject.server.domain.ServerStatusType;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
 
-@RequiredArgsConstructor
 @Getter
 @ToString
 public class ServerStatusVo {
@@ -16,13 +16,25 @@ public class ServerStatusVo {
 	private final int port;
 	private final String name;
 	private final ServerStatusType type;
-	private final int openYn;
+	private final boolean openYn;
 	private final String updateUser;
 	private final LocalDateTime updateTime;
 	private final String registerUser;
 	private final LocalDateTime registerTime;
 
-	public boolean isOpen(){
-		return openYn == 1;
+	@Builder
+	public ServerStatusVo(String ip, int port, String name,
+						  ServerStatusType type, boolean openYn, String updateUser,
+						  LocalDateTime updateTime, String registerUser,
+						  LocalDateTime registerTime) {
+		this.ip = ip;
+		this.port = port;
+		this.name = name;
+		this.type = type;
+		this.openYn = openYn;
+		this.updateUser = updateUser;
+		this.updateTime = updateTime;
+		this.registerUser = registerUser;
+		this.registerTime = registerTime;
 	}
 }

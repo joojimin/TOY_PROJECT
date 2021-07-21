@@ -1,6 +1,6 @@
 package com.my.toyproject.ipaccess.domain;
 
-import com.my.toyproject.ipaccess.infrastructure.BooleanToIntegerConverter;
+import com.my.toyproject.common.BooleanToIntegerConverter;
 import com.my.toyproject.ipaccess.infrastructure.IpAccessTypeToIntegerConverter;
 import java.time.LocalDateTime;
 import javax.persistence.Column;

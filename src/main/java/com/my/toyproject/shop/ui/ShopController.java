@@ -1,11 +1,11 @@
-package com.my.toyproject.shop.controller;
+package com.my.toyproject.shop.ui;
 
 import java.util.Collections;
 import java.util.List;
 
 import com.my.toyproject.dblog.application.EnableDataBaseLog;
 import com.my.toyproject.shop.dto.MemberDto;
-import com.my.toyproject.shop.service.ShopService;
+import com.my.toyproject.shop.application.ShopService;
 import com.my.toyproject.common.ApiVersion;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

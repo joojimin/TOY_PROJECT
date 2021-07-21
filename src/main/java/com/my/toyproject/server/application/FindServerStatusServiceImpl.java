@@ -1,7 +1,6 @@
-package com.my.toyproject.server.service;
+package com.my.toyproject.server.application;
 
-import com.my.toyproject.server.factory.ServerStatusFactory;
-import com.my.toyproject.server.mapper.ServerStatusMapper;
+import com.my.toyproject.server.domain.ServerStatusRepository;
 import com.my.toyproject.server.vo.ServerStatusVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +15,7 @@ import java.util.Optional;
 @Service
 public class FindServerStatusServiceImpl implements FindServerStatusService{
 
-	private final ServerStatusMapper serverStatusMapper;
+	private final ServerStatusRepository serverStatusRepository;
 	private final ServerStatusFactory serverStatusFactory;
 
 	@PostConstruct
@@ -26,7 +25,7 @@ public class FindServerStatusServiceImpl implements FindServerStatusService{
 
 	@Override
 	public void load() throws UnknownHostException {
-		serverStatusFactory.load(serverStatusMapper.selectAll());
+		serverStatusFactory.load(serverStatusRepository.findAll());
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package com.my.toyproject.shop.mapper;
 
+import com.my.toyproject.shop.domain.ShopRepository;
 import com.my.toyproject.shop.dto.MemberDto;
 import com.my.toyproject.test.config.CustomMapperTester;
 import org.junit.jupiter.api.Test;
@@ -8,17 +9,17 @@ import org.springframework.util.Assert;
 
 import java.util.List;
 
-class ShopMapperTest extends CustomMapperTester {
+class ShopRepositoryTest extends CustomMapperTester {
 
 	@Autowired
-	ShopMapper shopMapper;
+	ShopRepository shopRepository;
 
 	@Test
 	void selectMembersTest(){
 		// given
 
 		// when
-		List<MemberDto> results = shopMapper.selectMembers();
+		List<MemberDto> results = shopRepository.selectMembers();
 
 		// then
 		Assert.noNullElements(results, "result element is null");

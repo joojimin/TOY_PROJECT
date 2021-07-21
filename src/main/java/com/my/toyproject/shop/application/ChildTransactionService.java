@@ -1,6 +1,6 @@
-package com.my.toyproject.shop.service;
+package com.my.toyproject.shop.application;
 
-import com.my.toyproject.shop.mapper.ShopMapper;
+import com.my.toyproject.shop.domain.ShopRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -14,11 +14,11 @@ import java.time.LocalDateTime;
 @Service
 public class ChildTransactionService {
 
-    private final ShopMapper shopMapper;
+    private final ShopRepository shopRepository;
 
     @Transactional(propagation = Propagation.NESTED)
     public void insertMember() {
-        shopMapper.insertMember("childTest1", "구로구", LocalDateTime.now());
+        shopRepository.insertMember("childTest1", "구로구", LocalDateTime.now());
         log.error("===================================================");
         log.error("================ CHILD EXCEPTION =================");
         log.error("===================================================");

@@ -2,8 +2,8 @@ package com.my.toyproject.configuration;
 
 import com.my.toyproject.common.ServletRemoteIpHeaderType;
 import com.my.toyproject.ipaccess.application.IpAccessService;
-import com.my.toyproject.server.service.FindServerStatusService;
-import com.my.toyproject.server.type.ServerStatusType;
+import com.my.toyproject.server.application.FindServerStatusService;
+import com.my.toyproject.server.domain.ServerStatusType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;

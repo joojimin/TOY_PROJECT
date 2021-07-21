@@ -1,6 +1,7 @@
-package com.my.toyproject.server.factory;
+package com.my.toyproject.server.application;
 
-import com.my.toyproject.server.type.ServerStatusType;
+import com.my.toyproject.server.domain.ServerStatus;
+import com.my.toyproject.server.domain.ServerStatusType;
 import com.my.toyproject.server.vo.ServerStatusVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +14,6 @@ import java.net.UnknownHostException;
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -29,16 +29,14 @@ public class ServerStatusFactory {
 	private Map<String, ServerStatusVo> connectedApiServerMap;
 
 
-	public void load(final List<ServerStatusVo> serverStatusVoList) throws UnknownHostException {
+	public void load(final List<ServerStatus> serverStatuses) throws UnknownHostException {
 		Map<String, ServerStatusVo> tempConnectedApiServerMap =
-			serverStatusVoList
+			serverStatuses
 			.stream()
-			.filter(ServerStatusVo::isOpen)
-			.collect(Collectors
-						 .toUnmodifiableMap(
-							 (serverStatusVo -> makeKey(serverStatusVo.getIp(), serverStatusVo.getPort())),
-							 Function.identity())
-					);
+			.filter(ServerStatus::isOpen)
+			.map(ServerStatus::toServerStatusVO)
+			.collect(Collectors.toUnmodifiableMap((serverStatusVo -> makeKey(serverStatusVo.getIp(), serverStatusVo.getPort())),
+												  Function.identity()));
 
 		myStatus = getMyStatusInfo(tempConnectedApiServerMap);
 		connectedApiServerMap = tempConnectedApiServerMap;
@@ -56,7 +54,7 @@ public class ServerStatusFactory {
 								  Integer.parseInt(environment.getProperty("server.port")),
 								  "API_SERVER",
 								  ServerStatusType.PUBLIC,
-								  1,
+								  true,
 								  null,
 								  null,
 								  "system",

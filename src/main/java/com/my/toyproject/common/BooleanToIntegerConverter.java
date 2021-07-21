@@ -1,4 +1,4 @@
-package com.my.toyproject.ipaccess.infrastructure;
+package com.my.toyproject.common;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

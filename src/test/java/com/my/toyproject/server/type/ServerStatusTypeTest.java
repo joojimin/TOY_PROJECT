@@ -1,5 +1,6 @@
 package com.my.toyproject.server.type;
 
+import com.my.toyproject.server.domain.ServerStatusType;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

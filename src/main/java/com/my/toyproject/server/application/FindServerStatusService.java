@@ -1,4 +1,4 @@
-package com.my.toyproject.server.service;
+package com.my.toyproject.server.application;
 
 import com.my.toyproject.server.vo.ServerStatusVo;
 

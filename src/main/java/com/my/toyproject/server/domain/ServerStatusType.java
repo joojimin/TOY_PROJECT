@@ -1,4 +1,4 @@
-package com.my.toyproject.server.type;
+package com.my.toyproject.server.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

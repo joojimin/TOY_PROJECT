@@ -1,6 +1,6 @@
 package com.my.toyproject.shop.dto;
 
-import com.my.toyproject.shop.type.MemberBelongs;
+import com.my.toyproject.shop.domain.MemberBelongsType;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class MemberDto {
     private int memberId;
     private String memberName;
-    private MemberBelongs memberBelongs;
+    private MemberBelongsType memberBelongsType;
     private String memberAddress;
     private LocalDateTime registerTime;
     private LocalDateTime updateTime;

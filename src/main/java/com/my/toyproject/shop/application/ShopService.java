@@ -1,4 +1,4 @@
-package com.my.toyproject.shop.service;
+package com.my.toyproject.shop.application;
 
 import com.my.toyproject.shop.dto.MemberDto;
 
