@@ -8,9 +8,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 @Table(name = "member_table")
 @Entity
 public class Member {
@@ -30,4 +33,15 @@ public class Member {
     @Column(nullable = false)
     private LocalDateTime registerTime;
     private LocalDateTime updateTime;
+
+    @Builder
+    public Member(String name, String address,
+                  MemberBelongsType memberBelongs, LocalDateTime registerTime,
+                  LocalDateTime updateTime) {
+        this.name = name;
+        this.address = address;
+        this.memberBelongs = memberBelongs;
+        this.registerTime = registerTime;
+        this.updateTime = updateTime;
+    }
 }

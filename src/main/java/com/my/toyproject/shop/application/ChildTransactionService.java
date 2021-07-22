@@ -1,5 +1,6 @@
 package com.my.toyproject.shop.application;
 
+import com.my.toyproject.shop.domain.Member;
 import com.my.toyproject.shop.domain.ShopRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +19,11 @@ public class ChildTransactionService {
 
     @Transactional(propagation = Propagation.NESTED)
     public void insertMember() {
-        shopRepository.insertMember("childTest1", "구로구", LocalDateTime.now());
+        shopRepository.save(Member.builder()
+                                  .name("childTest1")
+                                  .address("구로구")
+                                  .registerTime(LocalDateTime.now())
+                                  .build());
         log.error("===================================================");
         log.error("================ CHILD EXCEPTION =================");
         log.error("===================================================");

@@ -48,7 +48,7 @@ class DataBaseLogAssemblerTest extends CustomMockitoTester {
 																			  TEST_PORT,
 																			  "test",
 																			  ServerStatusType.PUBLIC,
-																			  1,
+																			  true,
 																			  "test",
 																			  LocalDateTime.now(),
 																			  "test",
