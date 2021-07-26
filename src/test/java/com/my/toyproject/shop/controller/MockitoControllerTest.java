@@ -34,7 +34,7 @@ public class MockitoControllerTest extends CustomMockMvcTester {
 		Mockito.doThrow(new NullPointerException()).when(shopServiceImpl);
 
 		super.mockMvc.perform(get(EXCEPTION_TEST))
-					 .andExpect(status().isOk())
+					 .andExpect(status().is4xxClientError())
 					 .andDo(print());
 
 		Mockito.verify(shopServiceImpl, Mockito.times(1)).selectMembers();

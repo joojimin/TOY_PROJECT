@@ -17,7 +17,7 @@ import javax.servlet.Filter;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
-@ActiveProfiles("dev")
+@ActiveProfiles("local")
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
