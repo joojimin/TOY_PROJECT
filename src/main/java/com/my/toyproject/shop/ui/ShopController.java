@@ -22,13 +22,13 @@ import static com.my.toyproject.common.ApiVersionType.VERSION_2_0;
 @RestController
 public class ShopController {
 
-    private final ShopService shopServiceImpl;
+    private final ShopService shopService;
 
     @ApiVersion(VERSION_1_0)
     @GetMapping("/members")
     @EnableDataBaseLog
     public List<MemberDto> getMemberAll(){
-        List<MemberDto> list = shopServiceImpl.selectMembers();
+        List<MemberDto> list = shopService.selectMembers();
         log.debug("[shopService] selectMember call. result={}", list);
         return list;
     }
@@ -42,14 +42,14 @@ public class ShopController {
 
     @GetMapping("/exception-test")
     public List<MemberDto> exceptionTest(){
-        shopServiceImpl.exceptionTest();
+        shopService.exceptionTest();
 
-        return shopServiceImpl.selectMembers();
+        return shopService.selectMembers();
     }
 
     @GetMapping("/transaction-test")
     public ResponseEntity<Void> transactionTest() {
-        shopServiceImpl.transactionTest();
+        shopService.transactionTest();
         return ResponseEntity.ok().build();
     }
 
