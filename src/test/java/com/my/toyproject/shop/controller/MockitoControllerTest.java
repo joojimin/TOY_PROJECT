@@ -3,6 +3,7 @@ package com.my.toyproject.shop.controller;
 import com.my.toyproject.shop.application.ShopServiceImpl;
 import com.my.toyproject.configuration.CachingServletReqResFilter;
 import com.my.toyproject.test.config.CustomMockMvcTester;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -14,7 +15,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
+@Disabled
 public class MockitoControllerTest extends CustomMockMvcTester {
 
 	private static final String EXCEPTION_TEST = "/exceptionTest";

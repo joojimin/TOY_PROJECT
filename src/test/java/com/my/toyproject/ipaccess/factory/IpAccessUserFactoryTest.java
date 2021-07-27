@@ -3,6 +3,7 @@ package com.my.toyproject.ipaccess.factory;
 import com.my.toyproject.ipaccess.application.IpAccessUserFactory;
 import com.my.toyproject.ipaccess.domain.IpAccessUser;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Disabled
 class IpAccessUserFactoryTest {
 
     private IpAccessUserFactory ipAccessUserFactory;

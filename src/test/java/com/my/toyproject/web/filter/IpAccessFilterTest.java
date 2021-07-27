@@ -4,6 +4,7 @@ import com.my.toyproject.configuration.IpAccessFilter;
 import com.my.toyproject.ipaccess.application.IpAccessService;
 import com.my.toyproject.server.application.FindServerStatusService;
 import com.my.toyproject.test.config.CustomMockMvcTester;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,6 +15,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
+@Disabled
 class IpAccessFilterTest extends CustomMockMvcTester {
 
 	private static final String TEST_URL = "/ip-access/test";
