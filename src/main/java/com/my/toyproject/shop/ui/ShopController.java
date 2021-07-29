@@ -27,7 +27,7 @@ public class ShopController {
     @ApiVersion(VERSION_1_0)
     @GetMapping("/members")
     @EnableDataBaseLog
-    public List<MemberDto> getMemberAll(){
+    public List<MemberDto> getMemberAll() {
         List<MemberDto> list = shopService.selectMembers();
         log.debug("[shopService] selectMember call. result={}", list);
         return list;
@@ -35,13 +35,13 @@ public class ShopController {
 
     @ApiVersion(VERSION_2_0)
     @GetMapping("/members")
-    public List<MemberDto> getMemberAllV2_0(){
+    public List<MemberDto> getMemberAllV2_0() {
         // empty result
         return Collections.emptyList();
     }
 
     @GetMapping("/exception-test")
-    public List<MemberDto> exceptionTest(){
+    public List<MemberDto> exceptionTest() {
         shopService.exceptionTest();
 
         return shopService.selectMembers();
@@ -57,4 +57,17 @@ public class ShopController {
     public ResponseEntity<Void> handleRuntimeException() {
         return ResponseEntity.badRequest().build();
     }
+
+    @GetMapping("/sleep")
+    public ResponseEntity<Void> longSleepHandler() {
+        try {
+            Thread.sleep(20 * 1000L); // 따른 쓰레드 작업
+            log.info("sleep END!!!!!!!!");
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return ResponseEntity.ok().build();
+    }
+
+
 }
