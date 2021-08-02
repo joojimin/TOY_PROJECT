@@ -11,6 +11,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -25,6 +26,7 @@ public class Member {
     @Column(name = "member_name", nullable = false)
     private String name;
 
+    @Setter
     @Column(name = "member_address", nullable = false)
     private String address;
 
