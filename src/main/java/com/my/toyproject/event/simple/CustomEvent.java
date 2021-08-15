@@ -1,4 +1,4 @@
-package com.my.toyproject.event;
+package com.my.toyproject.event.simple;
 
 import org.springframework.context.ApplicationEvent;
 

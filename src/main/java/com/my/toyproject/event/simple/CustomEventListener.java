@@ -1,4 +1,4 @@
-package com.my.toyproject.event;
+package com.my.toyproject.event.simple;
 
 
 import lombok.extern.slf4j.Slf4j;
