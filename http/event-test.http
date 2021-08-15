@@ -1,0 +1,8 @@
+###
+POST {{host}}/event-test
+Content-Type: application/json
+
+{
+  "message": "hello"
+}
+###
