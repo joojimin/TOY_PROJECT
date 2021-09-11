@@ -18,12 +18,12 @@ public class ChargeService {
 
     @Transactional
     public void charge(final long itemId) {
-        Order order = orderRepository.save(new Order(itemId));
+        Order order = orderRepository.save(new Order(1L, itemId, "1111111"));
 
         order.pay();
-        applicationEventPublisher.publishEvent(new OrderPayEvent(this, order));
-        order.delivering();
-        applicationEventPublisher.publishEvent(new OrderDeliveryEvent(this, order));
-    }
+        applicationEventPublisher.publishEvent(new OrderPayEvent(this, order)); // 서버 로그
 
+        order.delivering();
+        applicationEventPublisher.publishEvent(new OrderDeliveryEvent(this, order)); // 두레이 훅
+    }
 }

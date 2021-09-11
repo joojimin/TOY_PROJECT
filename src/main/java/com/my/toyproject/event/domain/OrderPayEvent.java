@@ -1,6 +1,5 @@
 package com.my.toyproject.event.domain;
 
-import com.my.toyproject.event.domain.Order;
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 
