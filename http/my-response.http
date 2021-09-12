@@ -1,0 +1,20 @@
+###
+GET {{host}}/my-response/v1/get
+
+###
+GET {{host}}/my-response/v2/get
+
+###
+GET {{host}}/my-response/v3/get
+
+###
+GET {{host}}/my-response/v4/get
+
+###
+GET {{host}}/my-response/v5/get
+
+###
+GET {{host}}/my-response/v6/get
+
+###
+GET {{host}}/my-response/v7/get
