@@ -1,0 +1,29 @@
+###
+POST {{host}}/my-relation/item
+Content-Type: application/json
+
+{
+  "name": "테스트 아이템",
+  "price": 10000
+}
+
+###
+POST {{host}}/my-relation/user
+Content-Type: application/json
+
+{
+  "name": "주지민",
+  "hp": "010-0000-0000",
+  "email": "wnwlals22@naver.com"
+}
+
+###
+POST {{host}}/my-relation/order
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "itemIds": [
+    1,2
+  ]
+}
