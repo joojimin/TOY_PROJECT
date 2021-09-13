@@ -10,4 +10,7 @@ public interface RelationItemRepository extends JpaRepository<RelationItem, Long
 
     @Query(value = "SELECT i FROM RelationItem i WHERE i.id IN :ids")
     List<RelationItem> findByIds(List<Long> ids);
+
+
+    List<RelationItem> findDistinctByName(String name);
 }

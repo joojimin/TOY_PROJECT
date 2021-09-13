@@ -1,5 +1,6 @@
 package com.my.toyproject.relations.domain;
 
+import java.util.StringJoiner;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,5 +26,14 @@ public class RelationItem {
     public RelationItem(String name, Long price) {
         this.name = name;
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", RelationItem.class.getSimpleName() + "[", "]")
+            .add("id=" + id)
+            .add("name='" + name + "'")
+            .add("price=" + price)
+            .toString();
     }
 }
