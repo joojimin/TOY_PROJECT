@@ -19,4 +19,24 @@ public class RelationItemService {
     public List<RelationItem> distinct() {
         return relationItemRepository.findDistinctByName("테스트1 아이템");
     }
+
+    public List<RelationItem> distinctWithJPQL() {
+        return relationItemRepository.findDistinctByNameWithJPQL("테스트1 아이템");
+    }
+
+    public List<RelationItem> distinctWithNativeQuery() {
+        return relationItemRepository.findDistinctByNameWithNativeQuery("테스트1 아이템");
+    }
+
+    public List<RelationItem> and() {
+        return relationItemRepository.findByNameAndPrice("테스트1 아이템", 2000L);
+    }
+
+    public List<RelationItem> andWithJPQL() {
+        return relationItemRepository.findByNameAndPriceWithJPQL("테스트1 아이템", 2000L);
+    }
+
+    public List<RelationItem> andWithNativeQuery() {
+        return relationItemRepository.findByNameAndPriceWithNativeQuery("테스트1 아이템", 2000L);
+    }
 }

@@ -13,4 +13,19 @@ public interface RelationItemRepository extends JpaRepository<RelationItem, Long
 
 
     List<RelationItem> findDistinctByName(String name);
+
+    @Query(value = "SELECT DISTINCT i FROM RelationItem i WHERE i.name = :name")
+    List<RelationItem> findDistinctByNameWithJPQL(String name);
+
+    @Query(nativeQuery = true, value = "SELECT DISTINCT * FROM relation_item WHERE name = :name")
+    List<RelationItem> findDistinctByNameWithNativeQuery(String name);
+
+
+    List<RelationItem> findByNameAndPrice(String name, Long price);
+
+    @Query(value = "SELECT i FROM RelationItem i WHERE i.name = :name AND i.price = :price")
+    List<RelationItem> findByNameAndPriceWithJPQL(String name, Long price);
+
+    @Query(nativeQuery = true, value = "SELECT * FROM relation_item WHERE name = :name AND price = :price")
+    List<RelationItem> findByNameAndPriceWithNativeQuery(String name, Long price);
 }
