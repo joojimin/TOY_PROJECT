@@ -12,6 +12,7 @@ public interface RelationItemRepository extends JpaRepository<RelationItem, Long
     List<RelationItem> findByIds(List<Long> ids);
 
 
+    // DISTINCT
     List<RelationItem> findDistinctByName(String name);
 
     @Query(value = "SELECT DISTINCT i FROM RelationItem i WHERE i.name = :name")
@@ -21,6 +22,7 @@ public interface RelationItemRepository extends JpaRepository<RelationItem, Long
     List<RelationItem> findDistinctByNameWithNativeQuery(String name);
 
 
+    // AND
     List<RelationItem> findByNameAndPrice(String name, Long price);
 
     @Query(value = "SELECT i FROM RelationItem i WHERE i.name = :name AND i.price = :price")
@@ -28,4 +30,23 @@ public interface RelationItemRepository extends JpaRepository<RelationItem, Long
 
     @Query(nativeQuery = true, value = "SELECT * FROM relation_item WHERE name = :name AND price = :price")
     List<RelationItem> findByNameAndPriceWithNativeQuery(String name, Long price);
+
+
+    // OR
+    List<RelationItem> findByNameOrPrice(String name, Long price);
+
+    @Query(value = "SELECT i FROM RelationItem i WHERE i.name = :name OR i.price = :price")
+    List<RelationItem> findByNameOrPriceWithJPQL(String name, Long price);
+
+    @Query(nativeQuery = true, value = "SELECT * FROM relation_item WHERE name = :name OR price = :price")
+    List<RelationItem> findByNameOrPriceWithNativeQuery(String name, Long price);
+
+
+    // IS, EQUALS
+    List<RelationItem> findByName(String name);
+    List<RelationItem> findByNameIs(String name);
+    List<RelationItem> findByNameEquals(String name);
+
+    // BETWEEN
+    List<RelationItem> findByPriceBetween(Long start, Long end);
 }
