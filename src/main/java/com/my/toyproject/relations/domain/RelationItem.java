@@ -1,5 +1,6 @@
 package com.my.toyproject.relations.domain;
 
+import java.time.LocalDateTime;
 import java.util.StringJoiner;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,9 +24,13 @@ public class RelationItem {
     private String name;
     private Long price;
 
-    public RelationItem(String name, Long price) {
+    private LocalDateTime registerTime;
+    private LocalDateTime updateTime;
+
+    public RelationItem(String name, Long price, LocalDateTime registerTime) {
         this.name = name;
         this.price = price;
+        this.registerTime = registerTime;
     }
 
     @Override
@@ -34,6 +39,8 @@ public class RelationItem {
             .add("id=" + id)
             .add("name='" + name + "'")
             .add("price=" + price)
+            .add("registerTime=" + registerTime)
+            .add("updateTime=" + updateTime)
             .toString();
     }
 }

@@ -1,6 +1,7 @@
 package com.my.toyproject.relations.infrastructure;
 
 import com.my.toyproject.relations.domain.RelationItem;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -49,4 +50,15 @@ public interface RelationItemRepository extends JpaRepository<RelationItem, Long
 
     // BETWEEN
     List<RelationItem> findByPriceBetween(Long start, Long end);
+
+
+    // LESS THAN, GREATER THAN
+    List<RelationItem> findByPriceLessThan(Long price);
+    List<RelationItem> findByPriceLessThanEqual(Long price);
+    List<RelationItem> findByPriceGreaterThan(Long price);
+    List<RelationItem> findByPriceGreaterThanEqual(Long price);
+
+    // AFTER, BEFORE
+    List<RelationItem> findByPriceAfter(Long price);
+    List<RelationItem> findByRegisterTimeAfter(LocalDateTime registerTime);
 }

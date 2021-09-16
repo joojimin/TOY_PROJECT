@@ -12,6 +12,7 @@ import com.my.toyproject.relations.infrastructure.RelationItemRepository;
 import com.my.toyproject.relations.infrastructure.RelationOrderItemRepository;
 import com.my.toyproject.relations.infrastructure.RelationOrderRepository;
 import com.my.toyproject.relations.infrastructure.RelationUserRepository;
+import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,8 @@ public class RelationOrderService {
     public RelationItemResponseDto createItem(final RelationItemRequestDto relationItemRequestDto) {
         RelationItem relationItem = relationItemRepository
             .save(new RelationItem(relationItemRequestDto.getName(),
-                                   relationItemRequestDto.getPrice()));
+                                   relationItemRequestDto.getPrice(),
+                                   LocalDateTime.now()));
         return RelationItemResponseDto.create(relationItem);
     }
 

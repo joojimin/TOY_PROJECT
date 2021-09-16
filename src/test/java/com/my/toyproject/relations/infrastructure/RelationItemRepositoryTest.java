@@ -3,6 +3,7 @@ package com.my.toyproject.relations.infrastructure;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.my.toyproject.relations.domain.RelationItem;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,5 +54,23 @@ class RelationItemRepositoryTest {
     @Test
     void betweenTest() {
         relationItemRepository.findByPriceBetween(1000L, 2000L).forEach(System.out::println);
+    }
+
+    @Test
+    void lessThanTest() {
+        relationItemRepository.findByPriceLessThan(1000L)
+                              .forEach(System.out::println);
+    }
+
+    @Test
+    void lessThanEqualTest() {
+        relationItemRepository.findByPriceLessThanEqual(1000L)
+                              .forEach(System.out::println);
+    }
+
+    @Test
+    void afterTest() {
+        LocalDateTime localDateTime = LocalDateTime.now().minusDays(5);
+        relationItemRepository.findByRegisterTimeAfter(localDateTime).forEach(System.out::println);
     }
 }
