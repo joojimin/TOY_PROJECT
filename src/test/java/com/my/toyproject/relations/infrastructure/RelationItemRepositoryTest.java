@@ -73,4 +73,54 @@ class RelationItemRepositoryTest {
         LocalDateTime localDateTime = LocalDateTime.now().minusDays(5);
         relationItemRepository.findByRegisterTimeAfter(localDateTime).forEach(System.out::println);
     }
+
+    @Test
+    void nullTest() {
+        relationItemRepository.findByUpdateTimeNull().forEach(System.out::println);
+    }
+
+    @Test
+    void notNullTest() {
+        relationItemRepository.findByUpdateTimeNotNull().forEach(System.out::println);
+    }
+
+    @Test
+    void likeTest() {
+        relationItemRepository.findByNameLike("테스트1\\%\\% 아이템").forEach(System.out::println);
+    }
+
+    @Test
+    void startingWithTest() {
+        relationItemRepository.findByNameStartingWith("테스트1").forEach(System.out::println);
+    }
+
+    @Test
+    void endingWithTest() {
+        relationItemRepository.findByNameEndingWith("테스트1").forEach(System.out::println);
+    }
+
+    @Test
+    void containingTest() {
+        relationItemRepository.findByNameContaining("테스트1").forEach(System.out::println);
+    }
+
+    @Test
+    void orderByTest() {
+        relationItemRepository.findByOrderByRegisterTimeDesc().forEach(System.out::println);
+    }
+
+    @Test
+    void notTest() {
+        relationItemRepository.findByNameNot("테스트1").forEach(System.out::println);
+    }
+
+    @Test
+    void inTest() {
+        relationItemRepository.findByPriceIn(List.of(1000L, 2000L)).forEach(System.out::println);
+    }
+
+    @Test
+    void ignoreCaseTest() {
+        relationItemRepository.findByNameIgnoreCase("테스트1 HIHIHIHI").forEach(System.out::println);
+    }
 }
