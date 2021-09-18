@@ -1,6 +1,7 @@
 package com.my.toyproject.relations.domain;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -34,25 +35,23 @@ public class RelationOrder {
     private RelationDelivery delivery;
 
     @OneToMany(mappedBy = "order")
-    private List<RelationOrderItem> orderItems;
+    private List<RelationOrderItem> orderItems = new ArrayList<>();
 
     private LocalDateTime registerTime;
     private LocalDateTime updateTime;
 
-    @Builder
     public RelationOrder(RelationUser user,
                          RelationDelivery delivery,
-                         List<RelationOrderItem> orderItems,
                          LocalDateTime registerTime) {
         this.user = user;
         this.delivery = delivery;
-        this.orderItems = orderItems;
         this.registerTime = registerTime;
     }
 
     public static RelationOrder newInstance(RelationUser user,
-                                            RelationDelivery delivery,
-                                            List<RelationOrderItem> orderItems) {
-        return new RelationOrder(user, delivery, orderItems, LocalDateTime.now());
+                                            RelationDelivery delivery) {
+        return new RelationOrder(user, delivery, LocalDateTime.now());
     }
+
+
 }
