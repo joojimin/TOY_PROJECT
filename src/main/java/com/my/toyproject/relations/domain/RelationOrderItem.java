@@ -32,4 +32,8 @@ public class RelationOrderItem {
         this.order = order;
         this.item = item;
     }
+
+    public RelationItem getItem() {
+        return item;
+    }
 }

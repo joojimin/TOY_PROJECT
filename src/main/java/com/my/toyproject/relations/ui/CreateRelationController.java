@@ -5,6 +5,7 @@ import com.my.toyproject.relations.application.RelationOrderService;
 import com.my.toyproject.relations.dto.RelationItemRequestDto;
 import com.my.toyproject.relations.dto.RelationItemResponseDto;
 import com.my.toyproject.relations.dto.RelationOrderRequestDto;
+import com.my.toyproject.relations.dto.RelationOrderResponseDto;
 import com.my.toyproject.relations.dto.RelationUserRequestDto;
 import com.my.toyproject.relations.dto.RelationUserResponseDto;
 import java.net.URI;
@@ -36,10 +37,10 @@ public class CreateRelationController {
     }
 
     @PostMapping("my-relation/order")
-    public ResponseEntity<Void> createOrder(@RequestBody RelationOrderRequestDto relationOrderRequestDto) {
-        relationOrderService.createOrder(relationOrderRequestDto);
-        URI location = URI.create("/" + 1);
-        return ResponseEntity.created(location).build();
+    public ResponseEntity<RelationOrderResponseDto> createOrder(@RequestBody RelationOrderRequestDto relationOrderRequestDto) {
+        RelationOrderResponseDto relationOrderResponseDto = relationOrderService.createOrder(relationOrderRequestDto);
+        URI location = URI.create("/" + relationOrderResponseDto.getId());
+        return ResponseEntity.created(location).body(relationOrderResponseDto);
     }
 
     @GetMapping("/get")

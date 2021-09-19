@@ -27,7 +27,7 @@ public class RelationUserResponseDto {
     }
 
 
-    public static RelationUserResponseDto create(final RelationUser relationUser) {
+    public static RelationUserResponseDto convert(final RelationUser relationUser) {
         return new RelationUserResponseDto(relationUser.getId(),
                                            relationUser.getName(),
                                            relationUser.getHp(),

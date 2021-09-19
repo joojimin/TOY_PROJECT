@@ -14,10 +14,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.AccessLevel;
-import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 @Table(name = "relation_order")
 @Entity
 public class RelationOrder {
@@ -53,5 +54,7 @@ public class RelationOrder {
         return new RelationOrder(user, delivery, LocalDateTime.now());
     }
 
-
+    public void setOrderItems(List<RelationOrderItem> orderItems) {
+        this.orderItems = orderItems;
+    }
 }

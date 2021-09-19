@@ -8,6 +8,7 @@ import com.my.toyproject.relations.domain.RelationUser;
 import com.my.toyproject.relations.dto.RelationItemRequestDto;
 import com.my.toyproject.relations.dto.RelationItemResponseDto;
 import com.my.toyproject.relations.dto.RelationOrderRequestDto;
+import com.my.toyproject.relations.dto.RelationOrderResponseDto;
 import com.my.toyproject.relations.dto.RelationUserRequestDto;
 import com.my.toyproject.relations.dto.RelationUserResponseDto;
 import com.my.toyproject.relations.infrastructure.RelationDeliveryRepository;
@@ -16,8 +17,8 @@ import com.my.toyproject.relations.infrastructure.RelationOrderItemRepository;
 import com.my.toyproject.relations.infrastructure.RelationOrderRepository;
 import com.my.toyproject.relations.infrastructure.RelationUserRepository;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,34 +43,44 @@ public class RelationOrderService {
     }
 
     public RelationUserResponseDto createUser(final RelationUserRequestDto relationUserRequestDto) {
-        RelationUser relationUser = relationUserRepository.save(RelationUser.newInstance(relationUserRequestDto.getName(),
-                                                                                         relationUserRequestDto.getHp(),
-                                                                                         relationUserRequestDto.getEmail()));
-        return RelationUserResponseDto.create(relationUser);
+        RelationUser relationUser = relationUserRepository
+            .save(RelationUser.newInstance(relationUserRequestDto.getName(),
+                                           relationUserRequestDto.getHp(),
+                                           relationUserRequestDto.getEmail()));
+        return RelationUserResponseDto.convert(relationUser);
     }
 
-    public void createOrder(final RelationOrderRequestDto relationOrderRequestDto) {
+    public RelationOrderResponseDto createOrder(final RelationOrderRequestDto relationOrderRequestDto) {
         RelationUser relationUser = findRelationUser(relationOrderRequestDto);
         List<RelationItem> relationItems = findRelationItems(relationOrderRequestDto);
 
         // 딜리버리 생성
-        RelationDelivery relationDelivery = relationDeliveryRepository.save(RelationDelivery.initInstance());
+        RelationDelivery relationDelivery = relationDeliveryRepository
+            .save(RelationDelivery.initInstance());
 
         // Order 생성
-        RelationOrder relationOrder = relationOrderRepository.save(RelationOrder.newInstance(relationUser, relationDelivery));
+        RelationOrder relationOrder = relationOrderRepository
+            .save(RelationOrder.newInstance(relationUser, relationDelivery));
 
         // OrderItem 생성
-        List<RelationOrderItem> relationOrderItems = new ArrayList<>();
-        for(RelationItem relationItem : relationItems) {
-            relationOrderItems.add(relationOrderItemRepository.save(new RelationOrderItem(relationOrder, relationItem)));
-        }
+        List<RelationOrderItem> relationOrderItems = relationOrderItemRepository.saveAll(createRelationOrderItem(relationItems, relationOrder));
 
         // Order에 Setting후 반환
+        relationOrder.setOrderItems(relationOrderItems);
+        return RelationOrderResponseDto.convert(relationOrder);
+    }
+
+    private List<RelationOrderItem> createRelationOrderItem(List<RelationItem> relationItems,
+                                                            RelationOrder relationOrder) {
+        return relationItems.stream()
+                            .map(relationItem -> new RelationOrderItem(relationOrder, relationItem))
+                            .collect(Collectors.toList());
     }
 
     private List<RelationItem> findRelationItems(RelationOrderRequestDto relationOrderRequestDto) {
-        List<RelationItem> relationItems = relationItemRepository.findByIdIn(relationOrderRequestDto.getItemIds());
-        if(relationItems.size() != relationOrderRequestDto.getItemIds().size()) {
+        List<RelationItem> relationItems = relationItemRepository
+            .findByIdIn(relationOrderRequestDto.getItemIds());
+        if (relationItems.size() != relationOrderRequestDto.getItemIds().size()) {
             throw new IllegalArgumentException("오류");
         }
         return relationItems;
