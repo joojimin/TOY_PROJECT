@@ -1,5 +1,6 @@
 package com.my.toyproject.relations.application;
 
+import com.my.toyproject.relations.domain.DeliveryTypeCode;
 import com.my.toyproject.relations.domain.RelationDelivery;
 import com.my.toyproject.relations.domain.RelationItem;
 import com.my.toyproject.relations.domain.RelationOrder;
@@ -11,6 +12,7 @@ import com.my.toyproject.relations.dto.RelationOrderRequestDto;
 import com.my.toyproject.relations.dto.RelationOrderResponseDto;
 import com.my.toyproject.relations.dto.RelationUserRequestDto;
 import com.my.toyproject.relations.dto.RelationUserResponseDto;
+import com.my.toyproject.relations.dto.UpdateRelationDeliveryRequestDto;
 import com.my.toyproject.relations.infrastructure.RelationDeliveryRepository;
 import com.my.toyproject.relations.infrastructure.RelationItemRepository;
 import com.my.toyproject.relations.infrastructure.RelationOrderItemRepository;
@@ -68,6 +70,20 @@ public class RelationOrderService {
         // Order에 Setting후 반환
         relationOrder.setOrderItems(relationOrderItems);
         return RelationOrderResponseDto.convert(relationOrder);
+    }
+
+    public void updateRelationDelivery(final UpdateRelationDeliveryRequestDto requestDto) {
+        List<RelationDelivery> relationDeliveries = getRelationDeliveries(requestDto);
+
+        relationDeliveries.forEach(relationDelivery -> relationDelivery.updateTypeCode(requestDto.getDeliveryTypeCode()));
+    }
+
+    private List<RelationDelivery> getRelationDeliveries(UpdateRelationDeliveryRequestDto requestDto) {
+        List<RelationDelivery> relationDeliveries = relationDeliveryRepository.findByIdIn(requestDto.getDeliveryIds());
+        if (relationDeliveries.size() != requestDto.getDeliveryIds().size()) {
+            throw new IllegalArgumentException("오류");
+        }
+        return relationDeliveries;
     }
 
     private List<RelationOrderItem> createRelationOrderItem(List<RelationItem> relationItems,

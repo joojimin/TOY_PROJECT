@@ -8,11 +8,13 @@ import com.my.toyproject.relations.dto.RelationOrderRequestDto;
 import com.my.toyproject.relations.dto.RelationOrderResponseDto;
 import com.my.toyproject.relations.dto.RelationUserRequestDto;
 import com.my.toyproject.relations.dto.RelationUserResponseDto;
+import com.my.toyproject.relations.dto.UpdateRelationDeliveryRequestDto;
 import java.net.URI;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,11 +38,17 @@ public class CreateRelationController {
         return ResponseEntity.created(location).body(response);
     }
 
-    @PostMapping("my-relation/order")
+    @PostMapping("/my-relation/order")
     public ResponseEntity<RelationOrderResponseDto> createOrder(@RequestBody RelationOrderRequestDto relationOrderRequestDto) {
         RelationOrderResponseDto relationOrderResponseDto = relationOrderService.createOrder(relationOrderRequestDto);
         URI location = URI.create("/" + relationOrderResponseDto.getId());
         return ResponseEntity.created(location).body(relationOrderResponseDto);
+    }
+
+    @PutMapping("/my-relation/delivery")
+    public ResponseEntity<Void> updateDelivery(@RequestBody UpdateRelationDeliveryRequestDto requestDto) {
+        relationOrderService.updateRelationDelivery(requestDto);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/get")

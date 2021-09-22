@@ -36,4 +36,8 @@ public class RelationDelivery {
     public static RelationDelivery initInstance() {
         return new RelationDelivery(DeliveryTypeCode.READY, LocalDateTime.now());
     }
+
+    public void updateTypeCode(final DeliveryTypeCode deliveryTypeCode) {
+        this.typeCode = deliveryTypeCode;
+    }
 }

@@ -27,3 +27,14 @@ Content-Type: application/json
     1,2
   ]
 }
+
+###
+PUT {{host}}/my-relation/delivery
+Content-Type: application/json
+
+{
+  "deliveryIds": [
+    1,2,3
+  ],
+  "deliveryTypeCode": "DELIVERY_COMPLETE"
+}
