@@ -20,13 +20,13 @@ spring:
       ddl-auto: validate
     properties:
       hibernate:
-        jdbc.batch_size: 50
+        default_batch_fetch_size: 1000
         format_sql: true
         dialect: org.hibernate.dialect.MySQL57Dialect
-    show-sql: true
 
 logging:
   level:
     org:
       hibernate:
-        type: TRACE
+        SQL: debug
+        type: trace

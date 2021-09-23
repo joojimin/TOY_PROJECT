@@ -1,6 +1,5 @@
 package com.my.toyproject.relations.application;
 
-import com.my.toyproject.relations.domain.DeliveryTypeCode;
 import com.my.toyproject.relations.domain.RelationDelivery;
 import com.my.toyproject.relations.domain.RelationItem;
 import com.my.toyproject.relations.domain.RelationOrder;
@@ -72,20 +71,6 @@ public class RelationOrderService {
         return RelationOrderResponseDto.convert(relationOrder);
     }
 
-    public void updateRelationDelivery(final UpdateRelationDeliveryRequestDto requestDto) {
-        List<RelationDelivery> relationDeliveries = getRelationDeliveries(requestDto);
-
-        relationDeliveries.forEach(relationDelivery -> relationDelivery.updateTypeCode(requestDto.getDeliveryTypeCode()));
-    }
-
-    private List<RelationDelivery> getRelationDeliveries(UpdateRelationDeliveryRequestDto requestDto) {
-        List<RelationDelivery> relationDeliveries = relationDeliveryRepository.findByIdIn(requestDto.getDeliveryIds());
-        if (relationDeliveries.size() != requestDto.getDeliveryIds().size()) {
-            throw new IllegalArgumentException("오류");
-        }
-        return relationDeliveries;
-    }
-
     private List<RelationOrderItem> createRelationOrderItem(List<RelationItem> relationItems,
                                                             RelationOrder relationOrder) {
         return relationItems.stream()
@@ -107,8 +92,35 @@ public class RelationOrderService {
                                      .orElseThrow(() -> new IllegalArgumentException());
     }
 
-    @Transactional(readOnly = true)
-    public void find() {
+    public void updateRelationDelivery(final UpdateRelationDeliveryRequestDto requestDto) {
+        List<RelationDelivery> relationDeliveries = getRelationDeliveries(requestDto);
 
+        relationDeliveries.forEach(relationDelivery -> relationDelivery.updateTypeCode(requestDto.getDeliveryTypeCode()));
+    }
+
+    private List<RelationDelivery> getRelationDeliveries(UpdateRelationDeliveryRequestDto requestDto) {
+        List<RelationDelivery> relationDeliveries = relationDeliveryRepository.findByIdIn(requestDto.getDeliveryIds());
+        if (relationDeliveries.size() != requestDto.getDeliveryIds().size()) {
+            throw new IllegalArgumentException("오류");
+        }
+        return relationDeliveries;
+    }
+
+    @Transactional(readOnly = true)
+    public RelationOrderResponseDto findOrder(final Long orderId) {
+        RelationOrder relationOrder = findRelationOrder(orderId);
+        return RelationOrderResponseDto.convert(relationOrder);
+    }
+
+    @Transactional(readOnly = true)
+    public List<RelationOrderResponseDto> findAllOrder() {
+        List<RelationOrder> relationOrders = relationOrderRepository.findAllWithUserDelivery();
+        return relationOrders.stream()
+                             .map(RelationOrderResponseDto::convert)
+                             .collect(Collectors.toList());
+    }
+
+    private RelationOrder findRelationOrder(Long orderId) {
+        return relationOrderRepository.findById(orderId).orElseThrow(() -> new IllegalArgumentException("오류"));
     }
 }

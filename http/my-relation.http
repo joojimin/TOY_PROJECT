@@ -38,3 +38,11 @@ Content-Type: application/json
   ],
   "deliveryTypeCode": "DELIVERY_COMPLETE"
 }
+
+###
+GET {{host}}/my-relation/order/1
+
+###
+GET {{host}}/my-relation/order
+
+###
