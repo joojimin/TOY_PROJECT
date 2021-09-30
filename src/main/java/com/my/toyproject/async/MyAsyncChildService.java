@@ -4,10 +4,12 @@ import com.my.toyproject.shop.domain.Member;
 import com.my.toyproject.shop.domain.ShopRepository;
 import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Profile("dev")
 @RequiredArgsConstructor
 @Service
 public class MyAsyncChildService {

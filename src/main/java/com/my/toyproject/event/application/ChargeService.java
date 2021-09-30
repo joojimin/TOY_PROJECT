@@ -6,9 +6,11 @@ import com.my.toyproject.event.domain.OrderPayEvent;
 import com.my.toyproject.event.infrastructure.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Profile("dev")
 @RequiredArgsConstructor
 @Service
 public class ChargeService {

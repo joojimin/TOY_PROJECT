@@ -5,6 +5,7 @@ import com.my.toyproject.server.domain.ServerStatusType;
 import com.my.toyproject.server.vo.ServerStatusVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -18,6 +19,7 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+@Profile("dev")
 @Slf4j
 @RequiredArgsConstructor
 @Component

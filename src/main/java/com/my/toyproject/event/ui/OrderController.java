@@ -2,11 +2,13 @@ package com.my.toyproject.event.ui;
 
 import com.my.toyproject.event.application.ChargeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+@Profile("dev")
 @RequiredArgsConstructor
 @RestController
 public class OrderController {

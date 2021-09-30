@@ -4,11 +4,13 @@ import com.my.toyproject.ipaccess.dto.IpAccessUserDto;
 import com.my.toyproject.ipaccess.domain.IpAccessUserRepository;
 import com.my.toyproject.ipaccess.domain.IpAccessType;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.Optional;
 
+@Profile("dev")
 @RequiredArgsConstructor
 @Service
 public class IpAccessService {

@@ -1,9 +1,11 @@
 package com.my.toyproject.jpa;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Profile("dev")
 @RequiredArgsConstructor
 @Transactional
 @Service

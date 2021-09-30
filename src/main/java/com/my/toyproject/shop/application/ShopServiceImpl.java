@@ -6,12 +6,14 @@ import com.my.toyproject.shop.dto.MemberDto;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Profile("dev")
 @Slf4j
 @RequiredArgsConstructor
 @Service

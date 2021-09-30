@@ -4,12 +4,14 @@ import com.my.toyproject.shop.domain.Member;
 import com.my.toyproject.shop.domain.ShopRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
+@Profile("dev")
 @Slf4j
 @RequiredArgsConstructor
 @Service

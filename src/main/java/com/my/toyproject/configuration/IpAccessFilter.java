@@ -5,6 +5,7 @@ import com.my.toyproject.ipaccess.application.IpAccessService;
 import com.my.toyproject.server.application.FindServerStatusService;
 import com.my.toyproject.server.domain.ServerStatusType;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
 
+@Profile("dev")
 @RequiredArgsConstructor
 @WebFilter(urlPatterns = "/*")
 public class IpAccessFilter extends OncePerRequestFilter {

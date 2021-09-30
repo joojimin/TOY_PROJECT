@@ -4,12 +4,14 @@ import com.my.toyproject.server.domain.ServerStatusRepository;
 import com.my.toyproject.server.vo.ServerStatusVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.net.UnknownHostException;
 import java.util.Optional;
 
+@Profile("dev")
 @Slf4j
 @RequiredArgsConstructor
 @Service

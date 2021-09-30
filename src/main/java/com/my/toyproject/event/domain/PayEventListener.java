@@ -5,10 +5,12 @@ import static org.springframework.transaction.event.TransactionPhase.AFTER_COMPL
 import com.my.toyproject.event.application.PayService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.event.TransactionalEventListener;
 
+@Profile("dev")
 @RequiredArgsConstructor
 @Component
 @Slf4j

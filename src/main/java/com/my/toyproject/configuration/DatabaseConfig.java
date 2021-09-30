@@ -10,7 +10,7 @@ import javax.sql.DataSource;
 import org.springframework.context.annotation.Profile;
 
 @Profile(value = {
-    "!local"
+    "dev"
 })
 @Configuration
 public class DatabaseConfig {

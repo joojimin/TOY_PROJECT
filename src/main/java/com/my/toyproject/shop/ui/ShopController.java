@@ -9,6 +9,7 @@ import com.my.toyproject.shop.application.ShopService;
 import com.my.toyproject.common.ApiVersion;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import static com.my.toyproject.common.ApiVersionType.VERSION_1_0;
 import static com.my.toyproject.common.ApiVersionType.VERSION_2_0;
 
+@Profile("dev")
 @Slf4j
 @RequiredArgsConstructor
 @RestController

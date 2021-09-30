@@ -2,6 +2,7 @@ package com.my.toyproject.ipaccess.application;
 
 import com.my.toyproject.ipaccess.domain.IpAccessUser;
 import com.my.toyproject.ipaccess.dto.IpAccessUserDto;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -11,6 +12,7 @@ import java.util.stream.Collectors;
 
 import java.util.List;
 
+@Profile("dev")
 @Component
 public class IpAccessUserFactory {
 

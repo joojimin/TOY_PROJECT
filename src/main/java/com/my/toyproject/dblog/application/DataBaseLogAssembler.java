@@ -5,6 +5,7 @@ import com.my.toyproject.dblog.dto.DataBaseLogDto;
 import com.my.toyproject.server.application.ServerStatusFactory;
 import com.my.toyproject.common.TypeConverter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+@Profile("dev")
 @RequiredArgsConstructor
 @Component
 public class DataBaseLogAssembler {

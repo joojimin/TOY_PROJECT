@@ -4,8 +4,10 @@ import com.my.toyproject.dblog.domain.DataBaseLog;
 import com.my.toyproject.dblog.domain.DataBaseLogRepository;
 import com.my.toyproject.dblog.dto.DataBaseLogDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+@Profile("dev")
 @RequiredArgsConstructor
 @Service
 public class DataBaseLogServiceImpl implements DataBaseLogService {

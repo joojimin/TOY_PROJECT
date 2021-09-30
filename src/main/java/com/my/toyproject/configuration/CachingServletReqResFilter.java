@@ -1,6 +1,7 @@
 package com.my.toyproject.configuration;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@Profile("dev")
 @RequiredArgsConstructor
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @WebFilter(urlPatterns = "/*")

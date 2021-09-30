@@ -21,9 +21,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Profile("dev")
 @RequiredArgsConstructor
 @Service
 @Transactional
@@ -50,7 +52,7 @@ public class RelationOrderService {
                                            relationUserRequestDto.getEmail()));
         return RelationUserResponseDto.convert(relationUser);
     }
-
+    
     public RelationOrderResponseDto createOrder(final RelationOrderRequestDto relationOrderRequestDto) {
         RelationUser relationUser = findRelationUser(relationOrderRequestDto);
         List<RelationItem> relationItems = findRelationItems(relationOrderRequestDto);

@@ -3,10 +3,12 @@ package com.my.toyproject.event.application;
 import com.my.toyproject.event.domain.PayHistory;
 import com.my.toyproject.event.infrastructure.PayHistoryRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+@Profile("dev")
 @RequiredArgsConstructor
 @Service
 @Transactional
